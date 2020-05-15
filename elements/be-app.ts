@@ -14,6 +14,7 @@ type BTCToken = {
     readonly contractAddress: string;
     readonly abi: Array<string>;
     readonly functionName: string;
+    readonly href: string | 'NOT_SET';
 };
 
 const InitialState: Readonly<State> = {
@@ -26,7 +27,8 @@ const InitialState: Readonly<State> = {
             abi: [
                 'function totalSupply() public view returns (uint256)'   
             ],
-            functionName: 'totalSupply'
+            functionName: 'totalSupply',
+            href: 'https://etherscan.io/token/0x2260fac5e5542a773aa44fbcfedf7c193bc2c599'
         },
         {
             name: 'imBTC',
@@ -36,7 +38,30 @@ const InitialState: Readonly<State> = {
             abi: [
                 'function totalSupply() external view returns (uint256)'
             ],
-            functionName: 'totalSupply'
+            functionName: 'totalSupply',
+            href: 'https://etherscan.io/token/0x3212b29E33587A00FB1C83346f5dBFA69A458923'
+        },
+        {
+            name: 'sBTC',
+            decimals: 18,
+            totalSupply: 'NOT_SET',
+            contractAddress: '0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6',
+            abi: [
+                'function totalSupply() public view returns (uint256)'
+            ],
+            functionName: 'totalSupply',
+            href: 'https://etherscan.io/token/0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6'
+        },
+        {
+            name: 'pBTC',
+            decimals: 18,
+            totalSupply: 'NOT_SET',
+            contractAddress: '0x5228a22e72ccC52d415EcFd199F99D0665E7733b',
+            abi: [
+                'function totalSupply() external view returns (uint256)'
+            ],
+            functionName: 'totalSupply',
+            href: 'https://etherscan.io/token/0x5228a22e72ccc52d415ecfd199f99d0665e7733b'
         }
     ]
 };
@@ -47,17 +72,9 @@ class BEApp extends HTMLElement {
     constructor() {
         super();
 
-        // TODO load the balances
-
         const provider: Readonly<ethers.providers.BaseProvider> = ethers.getDefaultProvider('homestead');
 
         (async () => {
-            // const wbtcTotalSupply = await getWBTCTotalSupply(provider);
-            // this.store.wbtcTotalSupply = wbtcTotalSupply.div(10 ** 8);
-
-            // const imbtcTotalSupply = await getIMBTCTotalSupply(provider);
-            // this.store.imbtcTotalSupply = imbtcTotalSupply.div(10 ** 8);
-
             const btcTokensUnsorted: ReadonlyArray<BTCToken> = await Promise.all(this.store.btcTokens.map(async (btcToken: Readonly<BTCToken>) => {
                 return {
                     ...btcToken,
@@ -65,12 +82,20 @@ class BEApp extends HTMLElement {
                 };
             }));
 
-            const btcTokensSorted = [...btcTokensUnsorted].sort((a, b) => {
-                if (a.totalSupply > b.totalSupply) {
+            const btcTokensSorted: ReadonlyArray<BTCToken> = [...btcTokensUnsorted].sort((a, b) => {
+
+                if (
+                    a.totalSupply === 'NOT_SET' ||
+                    b.totalSupply === 'NOT_SET'
+                ) {
+                    return 0;
+                }
+
+                if (a.totalSupply.lt(b.totalSupply)) {
                     return 1;
                 }
 
-                if (a.totalSupply < b.totalSupply) {
+                if (a.totalSupply.gt(b.totalSupply)) {
                     return -1;
                 }
 
@@ -96,15 +121,71 @@ class BEApp extends HTMLElement {
         }, new BigNumber(0));
 
         return html`
-            <h1>BTC on Ethereum</h1>
+            <style>
+                body {
+                    background-color: black;
+                    font-family: sans-serif;
+                    width: 100vw;
+                    height: 100vh;
+                    margin: 0;
+                }
 
-            <br>
+                .be-token-main-container {
+                    width: 100%;
+                    height: 100%;
+                    box-sizing: border-box;
+                    padding: calc(50px + 1vmin);
+                }
 
-            <div>Total: ${totalResult === 'Loading...' ? totalResult : formatBigNumberForDisplay(totalResult)}</div>
+                .be-token-card-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                }
 
-            ${state.btcTokens.map((btcToken) => {
-                return html`<div>${btcToken.name}: ${btcToken.totalSupply === 'NOT_SET' ? 'Loading...' : formatBigNumberForDisplay(btcToken.totalSupply)}</div>`;
-            })}
+                .be-token-card {
+                    color: orange;
+                    border: solid 5px grey;
+                    padding: calc(25px + 1vmin);
+                    margin: calc(5px + 1vmin);
+                    border-radius: calc(5px + 1vmin);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    cursor: pointer;
+                    text-decoration: none;
+                }
+
+                .be-amount-text {
+                    color: orange;
+                    font-size: calc(50px + 1vmin);
+                }
+
+                .be-description-text {
+                    color: grey;
+                    font-size: calc(25px + 1vmin);
+                }
+            </style>
+
+            <div class="be-token-main-container">
+                <div style="display: flex; justify-content: center">
+                    <a class="be-token-card" href="/">
+                        <div class="be-amount-text">${totalResult === 'Loading...' ? totalResult : formatBigNumberForDisplay(totalResult)}</div>
+                        <div class="be-description-text">Total BTC on Ethereum</div>
+                    </a>
+                </div>
+
+                <div class="be-token-card-container">
+                    ${state.btcTokens.map((btcToken) => {
+                        return html`
+                            <a class="be-token-card" href="${btcToken.href}" target="_blank">
+                                <div class="be-amount-text">${btcToken.totalSupply === 'NOT_SET' ? 'Loading...' : formatBigNumberForDisplay(btcToken.totalSupply)}</div>
+                                <div class="be-description-text">${btcToken.name}</div>
+                            </a>
+                        `;
+                    })}
+                </div>
+            </div>
         `;
     }
 }
