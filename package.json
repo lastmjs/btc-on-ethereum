@@ -1,0 +1,27 @@
+{
+  "name": "btc-on-ethereum",
+  "version": "0.0.0",
+  "description": "Tracking the supply and growth of BTC on Ethereum",
+  "scripts": {
+    "start": "zwitterion --port 6798"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lastmjs/btc-on-ethereum.git"
+  },
+  "keywords": [],
+  "author": "Jordan Last <jordan.michael.last@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lastmjs/btc-on-ethereum/issues"
+  },
+  "homepage": "https://github.com/lastmjs/btc-on-ethereum#readme",
+  "dependencies": {
+    "ethers": "4.0.47",
+    "lit-html": "1.2.1",
+    "reduxular": "0.0.6"
+  },
+  "devDependencies": {
+    "zwitterion": "0.45.0"
+  }
+}
