@@ -212,11 +212,11 @@ class BEApp extends HTMLElement {
                 }
             </style>
 
-            <div style="position: absolute; opacity: .25; right: 25px; bottom: 25px">
+            <div style="position: fixed; opacity: .25; right: 25px; bottom: 25px">
                 <img src="bitcoin.png" style="max-height: 10vh">
             </div>
 
-            <div style="position: absolute; opacity: .25; left: 25px; top: 25px">
+            <div style="position: fixed; opacity: .25; left: 25px; top: 25px">
                 <img src="ethereum.png" style="max-height: 10vh">
             </div>
 
