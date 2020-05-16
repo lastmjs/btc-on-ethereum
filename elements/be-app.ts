@@ -5,12 +5,14 @@ import { BigNumber } from 'bignumber.js';
 
 type State = {
     readonly btcTokens: ReadonlyArray<BTCToken>;
+    readonly btcPriceInUSD: BigNumber | 'NOT_SET';
 };
 
 type BTCToken = {
     readonly name: string;
     readonly decimals: number;
     readonly totalSupply: BigNumber | 'NOT_SET';
+    readonly usdPrice: BigNumber | 'NOT_SET';
     readonly contractAddress: string;
     readonly abi: Array<string>;
     readonly functionName: string;
@@ -18,11 +20,13 @@ type BTCToken = {
 };
 
 const InitialState: Readonly<State> = {
+    btcPriceInUSD: 'NOT_SET',
     btcTokens: [
         {
             name: 'WBTC',
             decimals: 8,
             totalSupply: 'NOT_SET',
+            usdPrice: 'NOT_SET',
             contractAddress: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
             abi: [
                 'function totalSupply() public view returns (uint256)'   
@@ -34,6 +38,7 @@ const InitialState: Readonly<State> = {
             name: 'imBTC',
             decimals: 8,
             totalSupply: 'NOT_SET',
+            usdPrice: 'NOT_SET',
             contractAddress: '0x3212b29E33587A00FB1C83346f5dBFA69A458923',
             abi: [
                 'function totalSupply() external view returns (uint256)'
@@ -45,6 +50,7 @@ const InitialState: Readonly<State> = {
             name: 'sBTC',
             decimals: 18,
             totalSupply: 'NOT_SET',
+            usdPrice: 'NOT_SET',
             contractAddress: '0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6',
             abi: [
                 'function totalSupply() public view returns (uint256)'
@@ -56,6 +62,7 @@ const InitialState: Readonly<State> = {
             name: 'pBTC',
             decimals: 18,
             totalSupply: 'NOT_SET',
+            usdPrice: 'NOT_SET',
             contractAddress: '0x5228a22e72ccC52d415EcFd199F99D0665E7733b',
             abi: [
                 'function totalSupply() external view returns (uint256)'
@@ -67,6 +74,7 @@ const InitialState: Readonly<State> = {
             name: 'TBTC',
             decimals: 18,
             totalSupply: 'NOT_SET',
+            usdPrice: 'NOT_SET',
             contractAddress: '0x1bBE271d15Bb64dF0bc6CD28Df9Ff322F2eBD847',
             abi: [
                 'function totalSupply() external view returns (uint256)'
@@ -78,6 +86,7 @@ const InitialState: Readonly<State> = {
             name: 'HBTC',
             decimals: 18,
             totalSupply: 'NOT_SET',
+            usdPrice: 'NOT_SET',
             contractAddress: '0x0316EB71485b0Ab14103307bf65a021042c6d380',
             abi: [
                 'function totalSupply() public view returns (uint256 supply)'
@@ -97,10 +106,19 @@ class BEApp extends HTMLElement {
         const provider: Readonly<ethers.providers.BaseProvider> = ethers.getDefaultProvider('homestead');
 
         (async () => {
+
+            const btcPriceInUSD: BigNumber = await getBTCPriceInUSD(provider);
+
+            this.store.btcPriceInUSD = btcPriceInUSD.div(10 ** 8);
+
             const btcTokensUnsorted: ReadonlyArray<BTCToken> = await Promise.all(this.store.btcTokens.map(async (btcToken: Readonly<BTCToken>) => {
+
+                const totalSupply: BigNumber = (await getTotalSupply(btcToken, provider)).div(10 ** btcToken.decimals);
+
                 return {
                     ...btcToken,
-                    totalSupply: (await getTotalSupply(btcToken, provider)).div(10 ** btcToken.decimals)
+                    totalSupply,
+                    usdPrice: totalSupply.multipliedBy(this.store.btcPriceInUSD)
                 };
             }));
 
@@ -178,9 +196,14 @@ class BEApp extends HTMLElement {
                     text-decoration: none;
                 }
 
-                .be-amount-text {
+                .be-amount-btc-text {
                     color: orange;
                     font-size: calc(50px + 1vmin);
+                }
+
+                .be-amount-usd-text {
+                    color: green;
+                    font-size: calc(30px + 1vmin);
                 }
 
                 .be-description-text {
@@ -200,7 +223,8 @@ class BEApp extends HTMLElement {
             <div class="be-token-main-container">
                 <div style="display: flex; justify-content: center">
                     <a class="be-token-card" href="/">
-                        <div class="be-amount-text">${totalResult === 'Loading...' ? totalResult : formatBigNumberForDisplay(totalResult)}</div>
+                        <div class="be-amount-btc-text">${totalResult === 'Loading...' ? totalResult : formatBigNumberBTCForDisplay(totalResult)}</div>
+                        <div class="be-amount-usd-text">${totalResult === 'Loading...' ? 'Loading...' : formatBigNumberUSDForDisplay(totalResult.multipliedBy(state.btcPriceInUSD))}</div>
                         <div class="be-description-text">Total BTC on Ethereum</div>
                     </a>
                 </div>
@@ -209,7 +233,8 @@ class BEApp extends HTMLElement {
                     ${state.btcTokens.map((btcToken) => {
                         return html`
                             <a class="be-token-card" href="${btcToken.href}" target="_blank">
-                                <div class="be-amount-text">${btcToken.totalSupply === 'NOT_SET' ? 'Loading...' : formatBigNumberForDisplay(btcToken.totalSupply)}</div>
+                                <div class="be-amount-btc-text">${btcToken.totalSupply === 'NOT_SET' ? 'Loading...' : formatBigNumberBTCForDisplay(btcToken.totalSupply)}</div>
+                                <div class="be-amount-usd-text">${btcToken.usdPrice === 'NOT_SET' ? 'Loading...' : formatBigNumberUSDForDisplay(btcToken.usdPrice)}</div>
                                 <div class="be-description-text">${btcToken.name}</div>
                             </a>
                         `;
@@ -233,10 +258,31 @@ async function getTotalSupply(btcToken: Readonly<BTCToken>, provider: Readonly<e
     return new BigNumber((await contract[btcToken.functionName]()).toString());
 }
 
-function formatBigNumberForDisplay(bigNumber: BigNumber): string {
+async function getBTCPriceInUSD(provider: Readonly<ethers.providers.BaseProvider>): Promise<BigNumber> {
+
+    const chainlinkBTCUSDContractAddress = '0xF5fff180082d6017036B771bA883025c654BC935';
+
+    const chainlinkBTCUSDContractABI = [
+        'function latestAnswer() external view returns (int256)'
+    ];
+
+    const chainlinkBTCUSDContract = new ethers.Contract(chainlinkBTCUSDContractAddress, chainlinkBTCUSDContractABI, provider);
+    return new BigNumber((await chainlinkBTCUSDContract.latestAnswer()).toString());
+}
+
+function formatBigNumberBTCForDisplay(bigNumber: BigNumber): string {
     return bigNumber.toFormat(2, {
         groupSize: 3,
         groupSeparator: ',',
         decimalSeparator: '.'
+    });
+}
+
+function formatBigNumberUSDForDisplay(bigNumber: BigNumber): string {
+    return bigNumber.toFormat(2, {
+        groupSize: 3,
+        groupSeparator: ',',
+        decimalSeparator: '.',
+        prefix: '$'
     });
 }
