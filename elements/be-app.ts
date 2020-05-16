@@ -69,10 +69,21 @@ const InitialState: Readonly<State> = {
             totalSupply: 'NOT_SET',
             contractAddress: '0x1bBE271d15Bb64dF0bc6CD28Df9Ff322F2eBD847',
             abi: [
-                ' function totalSupply() external view returns (uint256)'
+                'function totalSupply() external view returns (uint256)'
             ],
             functionName: 'totalSupply',
             href: 'https://etherscan.io/token/0x1bBE271d15Bb64dF0bc6CD28Df9Ff322F2eBD847'
+        },
+        {
+            name: 'HBTC',
+            decimals: 18,
+            totalSupply: 'NOT_SET',
+            contractAddress: '0x0316EB71485b0Ab14103307bf65a021042c6d380',
+            abi: [
+                'function totalSupply() public view returns (uint256 supply)'
+            ],
+            functionName: 'totalSupply',
+            href: 'https://etherscan.io/token/0x0316EB71485b0Ab14103307bf65a021042c6d380'
         }
     ]
 };
