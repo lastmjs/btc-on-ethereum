@@ -62,6 +62,17 @@ const InitialState: Readonly<State> = {
             ],
             functionName: 'totalSupply',
             href: 'https://etherscan.io/token/0x5228a22e72ccc52d415ecfd199f99d0665e7733b'
+        },
+        {
+            name: 'tBTC',
+            decimals: 18,
+            totalSupply: 'NOT_SET',
+            contractAddress: '0x1bBE271d15Bb64dF0bc6CD28Df9Ff322F2eBD847',
+            abi: [
+                ' function totalSupply() external view returns (uint256)'
+            ],
+            functionName: 'totalSupply',
+            href: 'https://etherscan.io/token/0x1bBE271d15Bb64dF0bc6CD28Df9Ff322F2eBD847'
         }
     ]
 };
