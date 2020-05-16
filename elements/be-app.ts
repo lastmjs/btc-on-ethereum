@@ -205,7 +205,11 @@ class BEApp extends HTMLElement {
                     })}
                 </div>
 
-                <div style="color: grey; display: flex; justify-content: center; font-size: calc(10px + 1vmin); margin-top: calc(50px + 1vmin);">Feedback: <a href="https://t.me/lastmjs" target="_blank">@lastmjs</a></div>
+                <div style="color: grey; display: flex; flex-direction: column; align-items: center; font-size: calc(10px + 1vmin); margin-top: calc(50px + 1vmin);">
+                    <div>Feedback: <a href="https://t.me/lastmjs" target="_blank">@lastmjs</a></div>
+                    <div><a href="privacy.html">Privacy</a></div>
+                    <div><a href="oss-attribution/attribution.txt">Open Source</a></div>
+                </div>
             </div>
         `;
     }

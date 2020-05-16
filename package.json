@@ -4,7 +4,8 @@
   "description": "Tracking the supply and growth of BTC on Ethereum",
   "scripts": {
     "start": "zwitterion --port 6798",
-    "build": "zwitterion --port 6798 --build-static --exclude node_modules --include lit-html,reduxular,redux/es,ethers/dist"
+    "build": "zwitterion --port 6798 --build-static --exclude node_modules --include lit-html,reduxular,redux/es,ethers/dist",
+    "install": "generate-attribution"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "reduxular": "0.0.6"
   },
   "devDependencies": {
-    "zwitterion": "0.45.0"
+    "zwitterion": "0.45.0",
+    "oss-attribution-generator": "1.7.1"
   }
 }
