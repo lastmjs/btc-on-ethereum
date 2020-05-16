@@ -204,6 +204,8 @@ class BEApp extends HTMLElement {
                         `;
                     })}
                 </div>
+
+                <div style="color: grey; display: flex; justify-content: center; font-size: calc(10px + 1vmin); margin-top: calc(50px + 1vmin);">Feedback: <a href="https://t.me/lastmjs" target="_blank">@lastmjs</a></div>
             </div>
         `;
     }
