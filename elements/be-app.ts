@@ -20,7 +20,7 @@ type BTCToken = {
 const InitialState: Readonly<State> = {
     btcTokens: [
         {
-            name: 'wBTC',
+            name: 'WBTC',
             decimals: 8,
             totalSupply: 'NOT_SET',
             contractAddress: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
@@ -64,7 +64,7 @@ const InitialState: Readonly<State> = {
             href: 'https://etherscan.io/token/0x5228a22e72ccc52d415ecfd199f99d0665e7733b'
         },
         {
-            name: 'tBTC',
+            name: 'TBTC',
             decimals: 18,
             totalSupply: 'NOT_SET',
             contractAddress: '0x1bBE271d15Bb64dF0bc6CD28Df9Ff322F2eBD847',
