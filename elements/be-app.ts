@@ -93,6 +93,18 @@ const InitialState: Readonly<State> = {
             ],
             functionName: 'totalSupply',
             href: 'https://etherscan.io/token/0x0316EB71485b0Ab14103307bf65a021042c6d380'
+        },
+        {
+            name: 'renBTC',
+            decimals: 8,
+            totalSupply: 'NOT_SET',
+            usdPrice: 'NOT_SET',
+            contractAddress: '0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D',
+            abi: [
+                'function totalSupply() external view returns (uint256)'
+            ],
+            functionName: 'totalSupply',
+            href: 'https://etherscan.io/token/0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D'
         }
     ]
 };
@@ -106,6 +118,13 @@ class BEApp extends HTMLElement {
         const provider: Readonly<ethers.providers.BaseProvider> = ethers.getDefaultProvider('homestead');
 
         (async () => {
+
+            // TODO I am trying to get the events that I need to get historical minting of BTC tokens on Ethereum
+            // const logs = await provider.getLogs({
+            //     fromBlock: 0,
+            //     topics: []
+            // });
+
 
             const btcPriceInUSD: BigNumber = await getBTCPriceInUSD(provider);
 
