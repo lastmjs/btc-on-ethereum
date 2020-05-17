@@ -194,6 +194,7 @@ class BEApp extends HTMLElement {
                     height: 100%;
                     box-sizing: border-box;
                     padding: calc(50px + 1vmin);
+                    overflow-y: scroll;
                 }
 
                 .be-token-card-container {
@@ -249,7 +250,7 @@ class BEApp extends HTMLElement {
                 </div>
 
                 <div class="be-token-card-container">
-                    ${state.btcTokens.map((btcToken) => {
+                    ${state.btcTokens.map((btcToken: Readonly<BTCToken>) => {
                         return html`
                             <a class="be-token-card" href="${btcToken.href}" target="_blank">
                                 <div class="be-amount-btc-text">${btcToken.totalSupply === 'NOT_SET' ? 'Loading...' : formatBigNumberBTCForDisplay(btcToken.totalSupply)}</div>
@@ -261,7 +262,8 @@ class BEApp extends HTMLElement {
                 </div>
 
                 <div style="color: grey; display: flex; flex-direction: column; align-items: center; font-size: calc(10px + 1vmin); margin-top: calc(50px + 1vmin);">
-                    <div>Feedback: <a href="https://t.me/lastmjs" target="_blank">@lastmjs</a></div>
+                    <div>See also <a href="https://usdonethereum.com" target="_blank">USD on Ethereum</a></div>
+                    <div>Feedback (especially any missed tokens): <a href="https://twitter.com/lastmjs" target="_blank">Twitter</a>, <a href="https://t.me/lastmjs" target="_blank">Telegram</a>, <a href="mailto:jordan.michael.last@gmail.com">Email</a></div>
                     <div><a href="privacy.html">Privacy</a></div>
                     <div><a href="oss-attribution/attribution.txt">Open Source</a></div>
                 </div>
