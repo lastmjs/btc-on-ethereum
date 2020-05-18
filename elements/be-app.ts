@@ -249,6 +249,8 @@ class BEApp extends HTMLElement {
                     </a>
                 </div>
 
+                <div style="color: white; display: flex; justify-content: center; font-size: calc(25px + 1vmin)">Historical data (charts) coming soon!</div>
+
                 <div class="be-token-card-container">
                     ${state.btcTokens.map((btcToken: Readonly<BTCToken>) => {
                         return html`
