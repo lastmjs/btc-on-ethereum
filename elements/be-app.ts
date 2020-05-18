@@ -264,6 +264,7 @@ class BEApp extends HTMLElement {
                 </div>
 
                 <div style="color: grey; display: flex; flex-direction: column; align-items: center; font-size: calc(10px + 1vmin); margin-top: calc(50px + 1vmin);">
+                    <div>Donations: 0x1139c4Fbc7F8AC3eE07a280af1c4C62cc04f7Df6</div>
                     <div>See also <a href="https://usdonethereum.com" target="_blank">USD on Ethereum</a></div>
                     <div>Feedback (especially any missed tokens): <a href="https://twitter.com/lastmjs" target="_blank">Twitter</a>, <a href="https://t.me/lastmjs" target="_blank">Telegram</a>, <a href="mailto:jordan.michael.last@gmail.com">Email</a></div>
                     <div><a href="privacy.html">Privacy</a></div>
