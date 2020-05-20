@@ -1,4 +1,4 @@
 
-            import { BTCTokenHistoryItem } from '../index.d';
-            export const renbtcHistory: ReadonlyArray<BTCTokenHistoryItem> = [{"blockNumber":10055999,"timestamp":1589348686000,"amount":"0.00017483"},{"blockNumber":10056084,"timestamp":1589349795000,"amount":"1e-7"},{"blockNumber":10060198,"timestamp":1589404406000,"amount":"0.00024975"},{"blockNumber":10067780,"timestamp":1589506050000,"amount":"0.00094905"},{"blockNumber":10068005,"timestamp":1589509108000,"amount":"0.00994005"},{"blockNumber":10068301,"timestamp":1589512649000,"amount":"0.00104895"},{"blockNumber":10068334,"timestamp":1589513006000,"amount":"0.01593405"},{"blockNumber":10071164,"timestamp":1589551323000,"amount":"0.00505263"},{"blockNumber":10081684,"timestamp":1589693931000,"amount":"0.00994005"},{"blockNumber":10081693,"timestamp":1589694129000,"amount":"2.6e-7"},{"blockNumber":10101800,"timestamp":1589964372000,"amount":"1.9e-7"},{"blockNumber":10102795,"timestamp":1589977328000,"amount":"0.09985005"},{"blockNumber":10103129,"timestamp":1589982017000,"amount":"1.09885005"}];
-        
+                import { BTCTokenHistoryItem } from '../index.d';
+                export const renbtcHistory: ReadonlyArray<BTCTokenHistoryItem> = [];
+            

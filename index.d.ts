@@ -1,4 +1,5 @@
 import { BigNumber } from 'bignumber.js';
+import { ethers } from 'ethers';
 
 export type BTCToken = {
     readonly name: string;
@@ -21,3 +22,7 @@ export type BTCTokenHistoryItem = {
     readonly timestamp: number;
     readonly amount: string;
 };
+
+export interface EthereumLog extends ethers.providers.Log {
+    readonly issuanceType: 'MINT' | 'BURN';
+}

@@ -3,6 +3,11 @@ import { createObjectStore } from 'reduxular';
 import { ethers } from 'ethers';
 import { BigNumber } from 'bignumber.js';
 import { wbtcHistory } from '../services/wbtc-history';
+import { imbtcHistory } from '../services/imbtc-history';
+import { sbtcHistory } from '../services/sbtc-history';
+import { pbtcHistory } from '../services/pbtc-history';
+import { tbtcHistory } from '../services/tbtc-history';
+import { hbtcHistory } from '../services/hbtc-history';
 import {
     BTCToken
 } from '../index.d';
@@ -23,6 +28,72 @@ class BEApp extends HTMLElement {
 
     constructor() {
         super();
+
+        const wbtcSum = wbtcHistory.reduce((result, historyItem) => {
+
+            // if (historyItem.amount.includes('-')) {
+            //     return result;
+            // }
+
+            return result.plus(historyItem.amount);
+        }, new BigNumber(0));
+
+        console.log('wbtcSum', wbtcSum.toString());
+
+        const imbtcSum = imbtcHistory.reduce((result, historyItem) => {
+
+            // if (historyItem.amount.includes('-')) {
+            //     return result;
+            // }
+
+            return result.plus(historyItem.amount);
+        }, new BigNumber(0));
+
+        console.log('imbtcSum', imbtcSum.toString());
+
+        const sbtcSum = sbtcHistory.reduce((result, historyItem) => {
+
+            // if (historyItem.amount.includes('-')) {
+            //     return result;
+            // }
+
+            return result.plus(historyItem.amount);
+        }, new BigNumber(0));
+
+        console.log('sbtcSum', sbtcSum.toString());
+
+        const pbtcSum = pbtcHistory.reduce((result, historyItem) => {
+
+            // if (historyItem.amount.includes('-')) {
+            //     return result;
+            // }
+
+            return result.plus(historyItem.amount);
+        }, new BigNumber(0));
+
+        console.log('pbtcSum', pbtcSum.toString());
+
+        const tbtcSum = tbtcHistory.reduce((result, historyItem) => {
+
+            // if (historyItem.amount.includes('-')) {
+            //     return result;
+            // }
+
+            return result.plus(historyItem.amount);
+        }, new BigNumber(0));
+
+        console.log('tbtcSum', tbtcSum.toString());
+
+        const hbtcSum = hbtcHistory.reduce((result, historyItem) => {
+
+            // if (historyItem.amount.includes('-')) {
+            //     return result;
+            // }
+
+            return result.plus(historyItem.amount);
+        }, new BigNumber(0));
+
+        console.log('hbtcSum', hbtcSum.toString());
 
         const provider: Readonly<ethers.providers.BaseProvider> = ethers.getDefaultProvider('homestead');
 
