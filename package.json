@@ -5,7 +5,8 @@
   "scripts": {
     "start": "zwitterion --port 6798",
     "build": "zwitterion --port 6798 --build-static --exclude node_modules --include lit-html,reduxular,redux/es,ethers/dist",
-    "install": "generate-attribution"
+    "install": "generate-attribution",
+    "get-btc-token-history": ". .env/.development && ts-node --transpile-only scripts/get-btc-token-history.ts"
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,10 @@
     "reduxular": "0.0.6"
   },
   "devDependencies": {
-    "zwitterion": "0.45.0",
-    "oss-attribution-generator": "1.7.1"
+    "@types/node": "14.0.4",
+    "node-fetch": "2.6.0",
+    "oss-attribution-generator": "1.7.1",
+    "ts-node": "8.10.1",
+    "zwitterion": "0.45.0"
   }
 }

@@ -1,0 +1,4 @@
+
+            import { BTCTokenHistoryItem } from '../index.d';
+            export const hbtcHistory: ReadonlyArray<BTCTokenHistoryItem> = [{"blockNumber":9086738,"timestamp":1576035974000,"amount":"0.01"},{"blockNumber":9115113,"timestamp":1576491969000,"amount":"0.005"},{"blockNumber":9232407,"timestamp":1578385795000,"amount":"0.005"},{"blockNumber":9414923,"timestamp":1580803512000,"amount":"0.01"},{"blockNumber":9453409,"timestamp":1581315463000,"amount":"0.005"},{"blockNumber":9453883,"timestamp":1581321919000,"amount":"0.005"},{"blockNumber":9460663,"timestamp":1581410581000,"amount":"0.001"},{"blockNumber":9460923,"timestamp":1581414239000,"amount":"0.129"},{"blockNumber":9473201,"timestamp":1581577621000,"amount":"1"},{"blockNumber":9473327,"timestamp":1581579313000,"amount":"499"},{"blockNumber":9569736,"timestamp":1582861078000,"amount":"210"}];
+        

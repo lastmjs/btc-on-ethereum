@@ -1,0 +1,23 @@
+import { BigNumber } from 'bignumber.js';
+
+export type BTCToken = {
+    readonly name: string;
+    readonly decimals: number;
+    readonly totalSupply: BigNumber | 'NOT_SET';
+    readonly usdPrice: BigNumber | 'NOT_SET';
+    readonly contractAddress: string;
+    readonly abi: Array<string>;
+    readonly functionName: string;
+    readonly href: string | 'NOT_SET';
+};
+
+export type BlockNumbersWithTimestamps = {
+    readonly number: string;
+    readonly timestamp: string;
+};
+
+export type BTCTokenHistoryItem = {
+    readonly blockNumber: number;
+    readonly timestamp: number;
+    readonly amount: string;
+};
