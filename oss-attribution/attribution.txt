@@ -26,7 +26,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/abstract-provider
-5.0.0-beta.140 <https://github.com/ethers-io/ethers.js>
+5.0.0-beta.141 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -252,7 +252,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/contracts
-5.0.0-beta.152 <https://github.com/ethers-io/ethers.js>
+5.0.0-beta.153 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -333,7 +333,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/json-wallets
-5.0.0-beta.139 <https://github.com/ethers-io/ethers.js>
+5.0.0-beta.140 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -475,7 +475,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/providers
-5.0.0-beta.167 <https://github.com/ethers-io/ethers.js>
+5.0.0-beta.168 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -745,7 +745,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/web
-5.0.0-beta.140 <https://github.com/ethers-io/ethers.js>
+5.0.0-beta.141 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -834,7 +834,7 @@ authors: Michael Mclaughlin <M8ch88l@gmail.com>
 ******************************
 
 bn.js
-4.11.8 <https://github.com/indutny/bn.js>
+4.11.9 <https://github.com/indutny/bn.js>
 license: MIT
 authors: Fedor Indutny <fedor@indutny.com>
 
@@ -855,7 +855,7 @@ authors: Fedor Indutny <fedor@indutny.com>
 ******************************
 
 ethers
-5.0.0-beta.187 <https://github.com/ethers-io/ethers.js>
+5.0.0-beta.188 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -1111,7 +1111,7 @@ SOFTWARE.
 ******************************
 
 scrypt-js
-3.0.0 <https://github.com/ricmoo/scrypt-js>
+3.0.1 <https://github.com/ricmoo/scrypt-js>
 The MIT License (MIT)
 
 Copyright (c) 2016 Richard Moore

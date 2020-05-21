@@ -12,7 +12,7 @@ export type BTCToken = {
     readonly href: string | 'NOT_SET';
 };
 
-export type BlockNumbersWithTimestamps = {
+export type BlockNumberWithTimestamp = {
     readonly number: string;
     readonly timestamp: string;
 };

@@ -8,6 +8,7 @@ import { sbtcHistory } from '../services/sbtc-history';
 import { pbtcHistory } from '../services/pbtc-history';
 import { tbtcHistory } from '../services/tbtc-history';
 import { hbtcHistory } from '../services/hbtc-history';
+import { renbtcHistory } from '../services/renbtc-history';
 import {
     BTCToken
 } from '../index.d';
@@ -28,12 +29,14 @@ class BEApp extends HTMLElement {
 
     constructor() {
         super();
-
+        
         const wbtcSum = wbtcHistory.reduce((result, historyItem) => {
 
             // if (historyItem.amount.includes('-')) {
             //     return result;
             // }
+
+            // console.log(new BigNumber(historyItem.amount).toString())
 
             return result.plus(historyItem.amount);
         }, new BigNumber(0));
@@ -43,7 +46,7 @@ class BEApp extends HTMLElement {
         const imbtcSum = imbtcHistory.reduce((result, historyItem) => {
 
             // if (historyItem.amount.includes('-')) {
-            //     return result;
+            //     console.log(historyItem.amount.toString());
             // }
 
             return result.plus(historyItem.amount);
@@ -95,9 +98,26 @@ class BEApp extends HTMLElement {
 
         console.log('hbtcSum', hbtcSum.toString());
 
+        const renbtcSum = renbtcHistory.reduce((result, historyItem) => {
+
+            // if (historyItem.amount.includes('-')) {
+            //     return result;
+            // }
+
+            return result.plus(historyItem.amount);
+        }, new BigNumber(0));
+
+        console.log('renbtcSum', renbtcSum.toString());
+
         const provider: Readonly<ethers.providers.BaseProvider> = ethers.getDefaultProvider('homestead');
 
         (async () => {
+            // TODO trying to figure out if I can call contract methods at certain blocks
+            // const contract = new ethers.Contract(btcTokens[0].contractAddress, btcTokens[0].abi, provider);
+            // const totalSupplyAtBlock = new BigNumber((await contract[btcTokens[0].functionName]({ blockTag: undefined })));        
+
+            // console.log('totalSupplyAtBlock', totalSupplyAtBlock.toString());
+
             const btcPriceInUSD: BigNumber = await getBTCPriceInUSD(provider);
 
             this.store.btcPriceInUSD = btcPriceInUSD.div(10 ** 8);
@@ -251,7 +271,7 @@ window.customElements.define('be-app', BEApp);
 
 async function getTotalSupply(btcToken: Readonly<BTCToken>, provider: Readonly<ethers.providers.BaseProvider>): Promise<BigNumber> {
     const contract = new ethers.Contract(btcToken.contractAddress, btcToken.abi, provider);
-    return new BigNumber((await contract[btcToken.functionName]()).toString());
+    return new BigNumber((await contract[btcToken.functionName]({ blockTag: 10 })).toString());
 }
 
 async function getBTCPriceInUSD(provider: Readonly<ethers.providers.BaseProvider>): Promise<BigNumber> {

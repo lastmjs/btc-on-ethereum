@@ -1,9 +1,8 @@
-// TODO we might not need to sort everything, the charts might do it...not sure we shouldn't though
 import { btcTokens } from '../services/btc-tokens';
 import { ethers } from 'ethers';
 import { 
     BTCToken,
-    BlockNumbersWithTimestamps,
+    BlockNumberWithTimestamp,
     BTCTokenHistoryItem,
     EthereumLog
 } from '../index.d';
@@ -13,8 +12,8 @@ import { BigNumber } from 'bignumber.js';
 import * as fs from 'fs';
 
 (async () => {
-    // const provider: Readonly<ethers.providers.BaseProvider> = ethers.getDefaultProvider('homestead');
-    const provider: Readonly<ethers.providers.BaseProvider> = new ethers.providers.JsonRpcProvider(process.env.ETHEREUM_JSON_RPC_ENDPOINT);
+    const provider: Readonly<ethers.providers.BaseProvider> = ethers.getDefaultProvider('homestead');
+    // const provider: Readonly<ethers.providers.BaseProvider> = new ethers.providers.JsonRpcProvider(process.env.ETHEREUM_JSON_RPC_ENDPOINT);
     const latestBlockNumber: number = await provider.getBlockNumber();
 
     for (let i=0; i < btcTokens.length; i++) {
@@ -36,12 +35,16 @@ import * as fs from 'fs';
         const fromBlock: number = lastBlockNumber + 1;
 
         const mintLogs: ReadonlyArray<EthereumLog> = await fetchMintLogs(provider, btcToken.contractAddress, latestBlockNumber, fromBlock);
-        const burnLogs: ReadonlyArray<EthereumLog> = await fetchBurnLogs(provider, btcToken.contractAddress, latestBlockNumber, fromBlock);
+        const burnLogs: ReadonlyArray<EthereumLog> = await fetchBurnLogs(provider, btcToken.contractAddress, latestBlockNumber, fromBlock);        
         const ethereumLogs: ReadonlyArray<EthereumLog> = [...mintLogs, ...burnLogs];
+        const sortedEthereumLogs: ReadonlyArray<EthereumLog> = sortEthereumLogs(ethereumLogs);
+        console.log('sortedEthereumLogs', sortedEthereumLogs);
 
-        const blockNumbers: ReadonlyArray<number> = getBlockNumbersFromLogs(ethereumLogs);
-        const blockNumbersWithTimestamps: ReadonlyArray<BlockNumbersWithTimestamps> = await getBlockNumbersWithTimestamps(blockNumbers);
-        const untrackedBTCTokenHistoryItems: ReadonlyArray<BTCTokenHistoryItem> = createBTCTokenHistoryItems(ethereumLogs, blockNumbersWithTimestamps, btcToken.decimals);
+        const blockNumbers: ReadonlyArray<number> = getBlockNumbersFromLogs(sortedEthereumLogs);
+        console.log('blockNumbers', blockNumbers);
+        const blockNumbersWithTimestamps: ReadonlyArray<BlockNumberWithTimestamp> = await getBlockNumbersWithTimestamps(blockNumbers);
+
+        const untrackedBTCTokenHistoryItems: ReadonlyArray<BTCTokenHistoryItem> = createBTCTokenHistoryItems(sortedEthereumLogs, blockNumbersWithTimestamps);
 
         const newBTCTokenHistoryItems: ReadonlyArray<BTCTokenHistoryItem> = [...btcTokenHistoryItems, ...untrackedBTCTokenHistoryItems];
 
@@ -157,51 +160,73 @@ function getBlockNumbersFromLogs(logs: ReadonlyArray<ethers.providers.Log>): Rea
     return blockNumbers;
 }
 
-async function getBlockNumbersWithTimestamps(blockNumbers: ReadonlyArray<number>): Promise<ReadonlyArray<BlockNumbersWithTimestamps>> {
+async function getBlockNumbersWithTimestamps(
+    blockNumbers: ReadonlyArray<number>,
+    blockNumbersWithTimestamps: ReadonlyArray<BlockNumberWithTimestamp> = [],
+    start: number = 0,
+    window: number = 100
+): Promise<ReadonlyArray<BlockNumberWithTimestamp>> {
+
+    console.log('getBlockNumbersWithTimestamps');
+    console.log('start', start);
+    console.log('blockNumbers.length', blockNumbers.length);
+
+    if (start > blockNumbers.length - 1) {
+        return blockNumbersWithTimestamps;
+    }
+
+    const end: number = start + window > blockNumbers.length ? blockNumbers.length : start + window;
+
+    console.log('end', end);
+
     const result = await gqlRequest(fetch, `
         query ($blockNumbers: [Int!]) {
             blocks(where: {
                 number_in: $blockNumbers
-            }) {
+            }, skip: $skip, first: $first) {
                 number
                 timestamp
             }
         }
-  `, {
-      blockNumbers
-  });
+    `, {
+          blockNumbers: blockNumbers.slice(start, end)
+    });
 
-  const unsortedBlockNumbersWithTimestamps: ReadonlyArray<BlockNumbersWithTimestamps> = result.data.blocks;
-  const sortedBlockNumbersWithTimestamps: ReadonlyArray<BlockNumbersWithTimestamps> = [...unsortedBlockNumbersWithTimestamps].sort((a, b) => {
-        if (a.timestamp > b.timestamp) {
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+
+    return await getBlockNumbersWithTimestamps(blockNumbers, [...blockNumbersWithTimestamps, ...result.data.blocks], start + window);
+}
+
+function sortEthereumLogs(ethereumLogs: ReadonlyArray<EthereumLog>): ReadonlyArray<EthereumLog> {
+    const sortedEthereumLogs: ReadonlyArray<EthereumLog> = [...ethereumLogs].sort((a, b) => {
+        if (a.blockNumber > b.blockNumber) {
             return 1;
         }
 
-        if (a.timestamp < b.timestamp) {
+        if (a.blockNumber < b.blockNumber) {
             return -1;
         }
 
         return 0;
     });
 
-  return sortedBlockNumbersWithTimestamps;
+    return sortedEthereumLogs;
 }
 
 function createBTCTokenHistoryItems(
     ethereumLogs: ReadonlyArray<EthereumLog>,
-    blockNumbersWithTimestamps: ReadonlyArray<BlockNumbersWithTimestamps>,
-    decimals: number
+    blockNumbersWithTimestamps: ReadonlyArray<BlockNumberWithTimestamp>
 ): ReadonlyArray<BTCTokenHistoryItem> {
-    return blockNumbersWithTimestamps.map((blockNumberWithTimestamp: Readonly<BlockNumbersWithTimestamps>) => {
+    return ethereumLogs.map((ethereumLog: Readonly<EthereumLog>) => {
 
-        const ethereumLog: Readonly<EthereumLog> = ethereumLogs.find((ethereumLog: Readonly<EthereumLog>) => {
+        const blockNumberWithTimestamp: Readonly<BlockNumberWithTimestamp> = blockNumbersWithTimestamps.find((blockNumberWithTimestamp: Readonly<BlockNumberWithTimestamp>) => {
             return ethereumLog.blockNumber.toString() === blockNumberWithTimestamp.number;
         });
 
         return {
             blockNumber: parseInt(blockNumberWithTimestamp.number),
             timestamp: parseInt(blockNumberWithTimestamp.timestamp) * 1000,
-            amount: new BigNumber(ethereumLog.data).dividedBy(10 ** decimals).times(ethereumLog.issuanceType === 'MINT' ? 1 : -1).toString()
+            amount: new BigNumber(ethereumLog.data).times(ethereumLog.issuanceType === 'MINT' ? 1 : -1).toString()
         };
     });
 }
