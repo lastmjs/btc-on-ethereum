@@ -6,21 +6,32 @@ import {
     BTCTokenHistoryItem
 } from '../index.d';
 import { btcTokens } from '../services/btc-tokens';
+import './be-chart';
 
-type State = {};
+type State = {
+    readonly showing: string;
+    readonly btcTokenChartInfos: ReadonlyArray<{
+        readonly name: string;
+        readonly dates: ReadonlyArray<string>;
+        readonly amounts: ReadonlyArray<number>
+    }>
+};
 
-const InitialState: Readonly<State> = {};
+const InitialState: Readonly<State> = {
+    btcTokenChartInfos: [],
+    showing: ''
+};
 
 class BECharts extends HTMLElement {
     readonly store = createObjectStore(InitialState, (state: Readonly<State>) => litRender(this.render(state), this), this);
 
     connectedCallback() {
 
-        setTimeout(() => {
+        setTimeout(async () => {
 
             this.prepareTotalCanvas();
 
-            btcTokens.forEach(async (btcToken: Readonly<BTCToken>) => {
+            this.store.btcTokenChartInfos = await Promise.all(btcTokens.map(async (btcToken: Readonly<BTCToken>) => {
 
                 const btcTokenHistoryModule = await import(`../services/${btcToken.name.toLowerCase()}-history.ts`);
                 const btcTokenHistoryItems: ReadonlyArray<BTCTokenHistoryItem> = btcTokenHistoryModule[`${btcToken.name.toLowerCase()}History`];        
@@ -43,50 +54,12 @@ class BECharts extends HTMLElement {
                     items: []
                 }).items.map((item) => parseFloat(item.dividedBy(10 ** btcToken.decimals)));
             
-                const ctx = this.querySelector(`#${btcToken.name.toLowerCase()}-canvas`);
-
-                const chart = new (window as any).Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: dates,
-                        datasets: [
-                            {
-                                label: btcToken.name,
-                                backgroundColor: '#ffffff',
-                                data: amounts
-                            }
-                        ]
-                    },
-                    options: {
-                        scales: {
-                            xAxes: [
-                                {
-                                    type: 'time',
-                                    gridLines: {
-                                        // display: true,
-                                        // color: 'grey'
-                                    },
-                                    time: {
-                                        minUnit: 'month'
-                                    }
-                                }
-                            ],
-                            yAxes: [
-                                {
-                                    gridLines: {
-                                        color: 'rgba(255, 255, 255, .1)'
-                                    }
-                                }
-                            ]
-                        },
-                        elements: {
-                            point: {
-                                radius: 0
-                            }
-                        }
-                    }
-                });
-            });
+                return {
+                    name: btcToken.name.toLowerCase(),
+                    dates,
+                    amounts
+                };
+            }));
         });
     }
 
@@ -118,8 +91,6 @@ class BECharts extends HTMLElement {
             return 0;
         });
 
-        console.log('sortedTotalBTCTokenHistoryItems', sortedTotalBTCTokenHistoryItems);
-
         const dates: ReadonlyArray<string> = sortedTotalBTCTokenHistoryItems.map((btcHistoryItem: Readonly<BTCTokenHistoryItem>) => {
             return new Date(btcHistoryItem.timestamp).toISOString();
         });
@@ -148,7 +119,10 @@ class BECharts extends HTMLElement {
                     {
                         label: 'Total BTC on Ethereum',
                         backgroundColor: '#ffffff',
-                        data: amounts
+                        data: amounts,
+                        pointHitRadius: 10,
+                        // borderWidth: 10
+                        // steppedLine: true
                     }
                 ]
             },
@@ -185,10 +159,17 @@ class BECharts extends HTMLElement {
 
     render(state: Readonly<State>) {
         return html`
-            <div style="width: 100%; height: 100%">
-                <canvas id="total-canvas"></canvas>
-                ${btcTokens.map((btcToken: Readonly<BTCToken>) => {
-                    return html`<canvas id="${btcToken.name.toLowerCase()}-canvas"></canvas>`;
+            <div>
+                <div ?hidden=${state.showing !== 'total'}>
+                    <canvas id="total-canvas"></canvas>
+                </div>
+                
+                ${state.btcTokenChartInfos.map((btcTokenChartInfo) => {
+                    return html`
+                        <div ?hidden=${state.showing !== btcTokenChartInfo.name}>
+                            <be-chart .name=${btcTokenChartInfo.name} .dates=${btcTokenChartInfo.dates} .amounts=${btcTokenChartInfo.amounts}></be-chart>
+                        </div>
+                    `;
                 })}
             </div>
         `;

@@ -11,11 +11,13 @@ import './be-charts';
 type State = {
     readonly btcTokens: ReadonlyArray<BTCToken>;
     readonly btcPriceInUSD: BigNumber | 'NOT_SET';
+    readonly showingChartName: string;
 };
 
 const InitialState: Readonly<State> = {
     btcPriceInUSD: 'NOT_SET',
-    btcTokens
+    btcTokens,
+    showingChartName: 'total'
 };
 
 class BEApp extends HTMLElement {
@@ -99,13 +101,16 @@ class BEApp extends HTMLElement {
                     overflow-y: scroll;
                     display: flex;
                     flex-direction: column;
-                    align-items: center;
+                    overflow: hidden;
                 }
 
                 .be-token-card-container {
                     display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
+                    flex-direction: column;
+                    overflow-y: auto;
+                    height: 100%;
+                    justify-content: flex-start;
+                    /* align-self: flex-start; */
                 }
 
                 .be-token-card {
@@ -134,6 +139,15 @@ class BEApp extends HTMLElement {
                 .be-description-text {
                     color: grey;
                     font-size: calc(25px + 1vmin);
+                    text-align: center;
+                }
+
+                .be-chart-and-info-container {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    align-items: center;
                 }
             </style>
 
@@ -146,36 +160,38 @@ class BEApp extends HTMLElement {
             </div>
 
             <div class="be-token-main-container">
-                <div style="display: flex; justify-content: center">
-                    <a class="be-token-card" href="/">
-                        <div class="be-amount-btc-text">${totalResult === 'Loading...' ? totalResult : formatBigNumberBTCForDisplay(totalResult)}</div>
-                        <div class="be-amount-usd-text">${totalResult === 'Loading...' ? 'Loading...' : formatBigNumberUSDForDisplay(totalResult.multipliedBy(state.btcPriceInUSD))}</div>
-                        <div class="be-description-text">Total BTC on Ethereum</div>
-                    </a>
-                </div>
 
-                <div style="width: 50vw">
-                    <be-charts></be-charts>
-                </div>
+                <div style="display: flex; overflow: hidden">
+                
+                    <div class="be-token-card-container">
+                        <div class="be-token-card" @click=${() => this.store.showingChartName = 'total'} @mouseover=${() => this.store.showingChartName = 'total'}>
+                            <div class="be-amount-btc-text">${totalResult === 'Loading...' ? totalResult : formatBigNumberBTCForDisplay(totalResult)}</div>
+                            <div class="be-amount-usd-text">${totalResult === 'Loading...' ? 'Loading...' : formatBigNumberUSDForDisplay(totalResult.multipliedBy(state.btcPriceInUSD))}</div>
+                            <div class="be-description-text">Total BTC on Ethereum</div>
+                        </div>
+                        ${state.btcTokens.map((btcToken: Readonly<BTCToken>) => {
+                            return html`
+                                <div class="be-token-card" @click=${() => this.store.showingChartName = btcToken.name.toLowerCase()} @mouseover=${() => this.store.showingChartName = btcToken.name.toLowerCase()}>
+                                    <div class="be-amount-btc-text">${btcToken.totalSupply === 'NOT_SET' ? 'Loading...' : formatBigNumberBTCForDisplay(btcToken.totalSupply)}</div>
+                                    <div class="be-amount-usd-text">${btcToken.usdPrice === 'NOT_SET' ? 'Loading...' : formatBigNumberUSDForDisplay(btcToken.usdPrice)}</div>
+                                    <div class="be-description-text">${btcToken.name}</div>
+                                </div>
+                            `;
+                        })}
+                    </div>
 
-                <div class="be-token-card-container">
-                    ${state.btcTokens.map((btcToken: Readonly<BTCToken>) => {
-                        return html`
-                            <a class="be-token-card" href="${btcToken.href}" target="_blank">
-                                <div class="be-amount-btc-text">${btcToken.totalSupply === 'NOT_SET' ? 'Loading...' : formatBigNumberBTCForDisplay(btcToken.totalSupply)}</div>
-                                <div class="be-amount-usd-text">${btcToken.usdPrice === 'NOT_SET' ? 'Loading...' : formatBigNumberUSDForDisplay(btcToken.usdPrice)}</div>
-                                <div class="be-description-text">${btcToken.name}</div>
-                            </a>
-                        `;
-                    })}
-                </div>
-
-                <div style="color: grey; display: flex; flex-direction: column; align-items: center; font-size: calc(10px + 1vmin); margin-top: calc(50px + 1vmin);">
-                    <div>Donations: 0x1139c4Fbc7F8AC3eE07a280af1c4C62cc04f7Df6</div>
-                    <div>See also <a href="https://usdonethereum.com" target="_blank">USD on Ethereum</a></div>
-                    <div>Feedback (especially any missed tokens): <a href="https://twitter.com/lastmjs" target="_blank">Twitter</a>, <a href="https://t.me/lastmjs" target="_blank">Telegram</a>, <a href="mailto:jordan.michael.last@gmail.com">Email</a></div>
-                    <div><a href="privacy.html">Privacy</a></div>
-                    <div><a href="oss-attribution/attribution.txt">Open Source</a></div>
+                    <div class="be-chart-and-info-container">
+                        <div style="width: 50vw;">
+                            <be-charts .showing=${state.showingChartName}></be-charts>
+                        </div>
+                        <div style="position: fixed; bottom: calc(25px + 1vmin); color: grey; display: flex; flex-direction: column; align-items: center; font-size: calc(10px + 1vmin); margin-top: calc(50px + 1vmin); justify-self: flex-end">
+                            <div>Donations: 0x1139c4Fbc7F8AC3eE07a280af1c4C62cc04f7Df6</div>
+                            <div>See also <a href="https://usdonethereum.com" target="_blank">USD on Ethereum</a></div>
+                            <div>Feedback (especially any missed tokens): <a href="https://twitter.com/lastmjs" target="_blank">Twitter</a>, <a href="https://t.me/lastmjs" target="_blank">Telegram</a>, <a href="mailto:jordan.michael.last@gmail.com">Email</a></div>
+                            <div><a href="privacy.html">Privacy</a></div>
+                            <div><a href="oss-attribution/attribution.txt">Open Source</a></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
