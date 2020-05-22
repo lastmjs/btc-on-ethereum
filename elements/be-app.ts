@@ -2,17 +2,11 @@ import { html, render as litRender } from 'lit-html';
 import { createObjectStore } from 'reduxular';
 import { ethers } from 'ethers';
 import { BigNumber } from 'bignumber.js';
-import { wbtcHistory } from '../services/wbtc-history';
-import { imbtcHistory } from '../services/imbtc-history';
-import { sbtcHistory } from '../services/sbtc-history';
-import { pbtcHistory } from '../services/pbtc-history';
-import { tbtcHistory } from '../services/tbtc-history';
-import { hbtcHistory } from '../services/hbtc-history';
-import { renbtcHistory } from '../services/renbtc-history';
 import {
     BTCToken
 } from '../index.d';
 import { btcTokens } from '../services/btc-tokens';
+import './be-charts';
 
 type State = {
     readonly btcTokens: ReadonlyArray<BTCToken>;
@@ -29,59 +23,10 @@ class BEApp extends HTMLElement {
 
     constructor() {
         super();
-        
-        const wbtcSum = wbtcHistory.reduce((result, historyItem) => {
-            return result.plus(historyItem.amount);
-        }, new BigNumber(0));
-
-        console.log('wbtcSum', wbtcSum.toString());
-
-        const imbtcSum = imbtcHistory.reduce((result, historyItem) => {
-            return result.plus(historyItem.amount);
-        }, new BigNumber(0));
-
-        console.log('imbtcSum', imbtcSum.toString());
-
-        const sbtcToken = btcTokens.find((btcToken) => btcToken.name === 'sBTC');
-
-        const sbtcSum = sbtcHistory.reduce((result, historyItem) => {
-            return result.plus(historyItem.amount);
-        }, new BigNumber(0)).plus(sbtcToken.initialTotalSupply);
-
-        console.log('sbtcSum', sbtcSum.toString());
-
-        const pbtcSum = pbtcHistory.reduce((result, historyItem) => {
-            return result.plus(historyItem.amount);
-        }, new BigNumber(0));
-
-        console.log('pbtcSum', pbtcSum.toString());
-
-        const tbtcSum = tbtcHistory.reduce((result, historyItem) => {
-            return result.plus(historyItem.amount);
-        }, new BigNumber(0));
-
-        console.log('tbtcSum', tbtcSum.toString());
-
-        const hbtcSum = hbtcHistory.reduce((result, historyItem) => {
-            return result.plus(historyItem.amount);
-        }, new BigNumber(0));
-
-        console.log('hbtcSum', hbtcSum.toString());
-
-        const renbtcSum = renbtcHistory.reduce((result, historyItem) => {
-            return result.plus(historyItem.amount);
-        }, new BigNumber(0));
-
-        console.log('renbtcSum', renbtcSum.toString());
 
         const provider: Readonly<ethers.providers.BaseProvider> = ethers.getDefaultProvider('homestead');
 
         (async () => {
-            // TODO trying to figure out if I can call contract methods at certain blocks
-            // const contract = new ethers.Contract(btcTokens[0].contractAddress, btcTokens[0].abi, provider);
-            // const totalSupplyAtBlock = new BigNumber((await contract[btcTokens[0].functionName]({ blockTag: undefined })));        
-
-            // console.log('totalSupplyAtBlock', totalSupplyAtBlock.toString());
 
             const btcPriceInUSD: BigNumber = await getBTCPriceInUSD(provider);
 
@@ -152,6 +97,9 @@ class BEApp extends HTMLElement {
                     box-sizing: border-box;
                     padding: calc(50px + 1vmin);
                     overflow-y: scroll;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                 }
 
                 .be-token-card-container {
@@ -206,7 +154,9 @@ class BEApp extends HTMLElement {
                     </a>
                 </div>
 
-                <div style="color: white; display: flex; justify-content: center; font-size: calc(25px + 1vmin)">Historical data (charts) coming soon!</div>
+                <div style="width: 50vw">
+                    <be-charts></be-charts>
+                </div>
 
                 <div class="be-token-card-container">
                     ${state.btcTokens.map((btcToken: Readonly<BTCToken>) => {
