@@ -42,23 +42,15 @@ class BEApp extends HTMLElement {
 
         console.log('imbtcSum', imbtcSum.toString());
 
-        // const sbtcSum = sbtcHistory.reduce((result, historyItem) => {
+        const sbtcToken = btcTokens.find((btcToken) => btcToken.name === 'sBTC');
 
-        //     // if (historyItem.amount.includes('-')) {
-        //     //     return result;
-        //     // }
+        const sbtcSum = sbtcHistory.reduce((result, historyItem) => {
+            return result.plus(historyItem.amount);
+        }, new BigNumber(0)).plus(sbtcToken.initialTotalSupply);
 
-        //     return result.plus(historyItem.amount);
-        // }, new BigNumber(0));
-
-        // console.log('sbtcSum', sbtcSum.toString());
+        console.log('sbtcSum', sbtcSum.toString());
 
         const pbtcSum = pbtcHistory.reduce((result, historyItem) => {
-
-            // if (historyItem.amount.includes('-')) {
-            //     return result;
-            // }
-
             return result.plus(historyItem.amount);
         }, new BigNumber(0));
 

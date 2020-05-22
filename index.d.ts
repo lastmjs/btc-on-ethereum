@@ -5,6 +5,7 @@ export type BTCToken = {
     readonly name: string;
     readonly decimals: number;
     readonly totalSupply: BigNumber | 'NOT_SET';
+    readonly initialTotalSupply: string;
     readonly usdPrice: BigNumber | 'NOT_SET';
     readonly contractAddress: string;
     readonly abi: Array<string>;

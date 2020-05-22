@@ -7,6 +7,7 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         name: 'WBTC',
         decimals: 8,
         totalSupply: 'NOT_SET',
+        initialTotalSupply: '0',
         usdPrice: 'NOT_SET',
         contractAddress: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
         abi: [
@@ -28,6 +29,7 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         name: 'imBTC',
         decimals: 8,
         totalSupply: 'NOT_SET',
+        initialTotalSupply: '0',
         usdPrice: 'NOT_SET',
         contractAddress: '0x3212b29E33587A00FB1C83346f5dBFA69A458923',
         abi: [
@@ -45,22 +47,33 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
             return new BigNumber(log.data.slice(0, 66)).toString();
         }
     },
-    // {
-    //     name: 'sBTC',
-    //     decimals: 18,
-    //     totalSupply: 'NOT_SET',
-    //     usdPrice: 'NOT_SET',
-    //     contractAddress: '0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6',
-    //     abi: [
-    //         'function totalSupply() public view returns (uint256)'
-    //     ],
-    //     functionName: 'totalSupply',
-    //     href: 'https://etherscan.io/token/0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6'
-    // },
+    {
+        name: 'sBTC',
+        decimals: 18,
+        totalSupply: 'NOT_SET',
+        initialTotalSupply: '69994085605939743585',
+        usdPrice: 'NOT_SET',
+        contractAddress: '0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6',
+        abi: [
+            'function totalSupply() public view returns (uint256)'
+        ],
+        functionName: 'totalSupply',
+        href: 'https://etherscan.io/token/0xfE18be6b3Bd88A2D2A7f928d00292E7a9963CfC6',
+        mintTopics: [
+            '0xa59f12e354e8cd10bb74c559844c2dd69a5458e31fe56c7594c62ca57480509a'
+        ],
+        burnTopics: [
+            '0x696de425f79f4a40bc6d2122ca50507f0efbeabbff86a84871b7196ab8ea8df7'
+        ],
+        getAmountFromLog: (log: Readonly<ethers.providers.Log>) => {
+            return new BigNumber(log.data.slice(0, 66)).toString();
+        }
+    },
     {
         name: 'pBTC',
         decimals: 18,
         totalSupply: 'NOT_SET',
+        initialTotalSupply: '0',
         usdPrice: 'NOT_SET',
         contractAddress: '0x5228a22e72ccC52d415EcFd199F99D0665E7733b',
         abi: [
@@ -82,6 +95,7 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         name: 'TBTC',
         decimals: 18,
         totalSupply: 'NOT_SET',
+        initialTotalSupply: '0',
         usdPrice: 'NOT_SET',
         contractAddress: '0x1bBE271d15Bb64dF0bc6CD28Df9Ff322F2eBD847',
         abi: [
@@ -106,6 +120,7 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         name: 'HBTC',
         decimals: 18,
         totalSupply: 'NOT_SET',
+        initialTotalSupply: '0',
         usdPrice: 'NOT_SET',
         contractAddress: '0x0316EB71485b0Ab14103307bf65a021042c6d380',
         abi: [
@@ -127,6 +142,7 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         name: 'renBTC',
         decimals: 8,
         totalSupply: 'NOT_SET',
+        initialTotalSupply: '0',
         usdPrice: 'NOT_SET',
         contractAddress: '0xEB4C2781e4ebA804CE9a9803C67d0893436bB27D',
         abi: [
