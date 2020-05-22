@@ -34,8 +34,14 @@ import * as fs from 'fs';
         const lastBlockNumber: number = lastBTCTokenHistoryItem ? lastBTCTokenHistoryItem.blockNumber : -1;
         const fromBlock: number = lastBlockNumber + 1;
 
-        const mintLogs: ReadonlyArray<EthereumLog> = await fetchMintLogs(provider, btcToken.contractAddress, latestBlockNumber, fromBlock);
-        const burnLogs: ReadonlyArray<EthereumLog> = await fetchBurnLogs(provider, btcToken.contractAddress, latestBlockNumber, fromBlock);        
+        const mintLogs: ReadonlyArray<EthereumLog> = await fetchLogs(provider, btcToken.contractAddress, btcToken.mintTopics, 'MINT', latestBlockNumber, fromBlock);
+        
+        console.log('mintLogs', mintLogs);
+        
+        const burnLogs: ReadonlyArray<EthereumLog> = await fetchLogs(provider, btcToken.contractAddress, btcToken.burnTopics, 'BURN', latestBlockNumber, fromBlock);        
+        
+        console.log('burnLogs', burnLogs);
+        
         const ethereumLogs: ReadonlyArray<EthereumLog> = [...mintLogs, ...burnLogs];
         const sortedEthereumLogs: ReadonlyArray<EthereumLog> = sortEthereumLogs(ethereumLogs);
         console.log('sortedEthereumLogs', sortedEthereumLogs);
@@ -44,7 +50,7 @@ import * as fs from 'fs';
         console.log('blockNumbers', blockNumbers);
         const blockNumbersWithTimestamps: ReadonlyArray<BlockNumberWithTimestamp> = await getBlockNumbersWithTimestamps(blockNumbers);
 
-        const untrackedBTCTokenHistoryItems: ReadonlyArray<BTCTokenHistoryItem> = createBTCTokenHistoryItems(sortedEthereumLogs, blockNumbersWithTimestamps);
+        const untrackedBTCTokenHistoryItems: ReadonlyArray<BTCTokenHistoryItem> = createBTCTokenHistoryItems(sortedEthereumLogs, blockNumbersWithTimestamps, btcToken.getAmountFromLog);
 
         const newBTCTokenHistoryItems: ReadonlyArray<BTCTokenHistoryItem> = [...btcTokenHistoryItems, ...untrackedBTCTokenHistoryItems];
 
@@ -60,59 +66,15 @@ import * as fs from 'fs';
 
 })();
 
-async function fetchMintLogs(
+async function fetchLogs(
     provider: Readonly<ethers.providers.BaseProvider>,
     contractAddress: string,
+    topics: Array<string | null>,
+    mintOrBurn: 'MINT' | 'BURN',
     latestBlockNumber: number,
     fromBlock: number,
     toBlock: number = 0,
-    skip: number = 500000,
-    allEthereumLogs: ReadonlyArray<EthereumLog> = []
-): Promise<ReadonlyArray<EthereumLog>> {
-
-    console.log('fetchMintLogs');
-    console.log('fromBlock', fromBlock);
-    console.log('toBlock', toBlock);
-
-    if (fromBlock > latestBlockNumber) {
-        return allEthereumLogs;
-    }
-
-    const theToBlock = toBlock === 0 ? fromBlock + skip - 1 : toBlock - 1;
-    const theActualToBlock = theToBlock > latestBlockNumber ? latestBlockNumber : theToBlock;
-
-    console.log('theToBlock', theToBlock);
-    console.log('theActualToBlock', theActualToBlock);
-
-    const someLogs: ReadonlyArray<ethers.providers.Log> = await provider.getLogs({
-        fromBlock,
-        toBlock: theActualToBlock,
-        address: contractAddress,
-        topics: [
-            '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
-            '0x0000000000000000000000000000000000000000000000000000000000000000'
-        ]
-    });
-
-    const someEthereumLogs: ReadonlyArray<EthereumLog> = someLogs.map((log: Readonly<ethers.providers.Log>) => {
-        return {
-            ...log,
-            issuanceType: 'MINT'
-        };
-    });
-
-    await new Promise((resolve) => setTimeout(resolve, 5000));
-
-    return await fetchMintLogs(provider, contractAddress, latestBlockNumber, fromBlock + skip, theToBlock + skip + 1, skip, [...allEthereumLogs, ...someEthereumLogs]);
-}
-
-async function fetchBurnLogs(
-    provider: Readonly<ethers.providers.BaseProvider>,
-    contractAddress: string,
-    latestBlockNumber: number,
-    fromBlock: number,
-    toBlock: number = 0,
-    skip: number = 500000,
+    skip: number = 1000000,
     allEthereumLogs: ReadonlyArray<EthereumLog> = []
 ): Promise<ReadonlyArray<EthereumLog>> {
 
@@ -134,23 +96,19 @@ async function fetchBurnLogs(
         fromBlock,
         toBlock: theActualToBlock,
         address: contractAddress,
-        topics: [
-            '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
-            null,
-            '0x0000000000000000000000000000000000000000000000000000000000000000'
-        ]
+        topics
     });
 
     const someEthereumLogs: ReadonlyArray<EthereumLog> = someLogs.map((log: Readonly<ethers.providers.Log>) => {
         return {
             ...log,
-            issuanceType: 'BURN'
+            issuanceType: mintOrBurn
         };
     });
 
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    return await fetchBurnLogs(provider, contractAddress, latestBlockNumber, fromBlock + skip, theToBlock + skip + 1, skip, [...allEthereumLogs, ...someEthereumLogs]);
+    return await fetchLogs(provider, contractAddress, topics, mintOrBurn, latestBlockNumber, fromBlock + skip, theToBlock + skip + 1, skip, [...allEthereumLogs, ...someEthereumLogs]);
 }
 
 function getBlockNumbersFromLogs(logs: ReadonlyArray<ethers.providers.Log>): ReadonlyArray<number> {
@@ -192,7 +150,7 @@ async function getBlockNumbersWithTimestamps(
           blockNumbers: blockNumbers.slice(start, end)
     });
 
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     return await getBlockNumbersWithTimestamps(blockNumbers, [...blockNumbersWithTimestamps, ...result.data.blocks], start + window);
 }
@@ -215,7 +173,8 @@ function sortEthereumLogs(ethereumLogs: ReadonlyArray<EthereumLog>): ReadonlyArr
 
 function createBTCTokenHistoryItems(
     ethereumLogs: ReadonlyArray<EthereumLog>,
-    blockNumbersWithTimestamps: ReadonlyArray<BlockNumberWithTimestamp>
+    blockNumbersWithTimestamps: ReadonlyArray<BlockNumberWithTimestamp>,
+    getAmountFromLog: (log: Readonly<ethers.providers.Log>) => string
 ): ReadonlyArray<BTCTokenHistoryItem> {
     return ethereumLogs.map((ethereumLog: Readonly<EthereumLog>) => {
 
@@ -226,7 +185,7 @@ function createBTCTokenHistoryItems(
         return {
             blockNumber: parseInt(blockNumberWithTimestamp.number),
             timestamp: parseInt(blockNumberWithTimestamp.timestamp) * 1000,
-            amount: new BigNumber(ethereumLog.data).times(ethereumLog.issuanceType === 'MINT' ? 1 : -1).toString()
+            amount: new BigNumber(getAmountFromLog(ethereumLog)).times(ethereumLog.issuanceType === 'MINT' ? 1 : -1).toString()
         };
     });
 }

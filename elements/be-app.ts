@@ -31,39 +31,27 @@ class BEApp extends HTMLElement {
         super();
         
         const wbtcSum = wbtcHistory.reduce((result, historyItem) => {
-
-            // if (historyItem.amount.includes('-')) {
-            //     return result;
-            // }
-
-            // console.log(new BigNumber(historyItem.amount).toString())
-
             return result.plus(historyItem.amount);
         }, new BigNumber(0));
 
         console.log('wbtcSum', wbtcSum.toString());
 
         const imbtcSum = imbtcHistory.reduce((result, historyItem) => {
-
-            // if (historyItem.amount.includes('-')) {
-            //     console.log(historyItem.amount.toString());
-            // }
-
             return result.plus(historyItem.amount);
         }, new BigNumber(0));
 
         console.log('imbtcSum', imbtcSum.toString());
 
-        const sbtcSum = sbtcHistory.reduce((result, historyItem) => {
+        // const sbtcSum = sbtcHistory.reduce((result, historyItem) => {
 
-            // if (historyItem.amount.includes('-')) {
-            //     return result;
-            // }
+        //     // if (historyItem.amount.includes('-')) {
+        //     //     return result;
+        //     // }
 
-            return result.plus(historyItem.amount);
-        }, new BigNumber(0));
+        //     return result.plus(historyItem.amount);
+        // }, new BigNumber(0));
 
-        console.log('sbtcSum', sbtcSum.toString());
+        // console.log('sbtcSum', sbtcSum.toString());
 
         const pbtcSum = pbtcHistory.reduce((result, historyItem) => {
 
@@ -77,33 +65,18 @@ class BEApp extends HTMLElement {
         console.log('pbtcSum', pbtcSum.toString());
 
         const tbtcSum = tbtcHistory.reduce((result, historyItem) => {
-
-            // if (historyItem.amount.includes('-')) {
-            //     return result;
-            // }
-
             return result.plus(historyItem.amount);
         }, new BigNumber(0));
 
         console.log('tbtcSum', tbtcSum.toString());
 
         const hbtcSum = hbtcHistory.reduce((result, historyItem) => {
-
-            // if (historyItem.amount.includes('-')) {
-            //     return result;
-            // }
-
             return result.plus(historyItem.amount);
         }, new BigNumber(0));
 
         console.log('hbtcSum', hbtcSum.toString());
 
         const renbtcSum = renbtcHistory.reduce((result, historyItem) => {
-
-            // if (historyItem.amount.includes('-')) {
-            //     return result;
-            // }
-
             return result.plus(historyItem.amount);
         }, new BigNumber(0));
 

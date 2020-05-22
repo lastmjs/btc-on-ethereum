@@ -10,6 +10,9 @@ export type BTCToken = {
     readonly abi: Array<string>;
     readonly functionName: string;
     readonly href: string | 'NOT_SET';
+    readonly mintTopics: Array<string | null>;
+    readonly burnTopics: Array<string | null>;
+    readonly getAmountFromLog: (log: Readonly<ethers.providers.Log>) => string;
 };
 
 export type BlockNumberWithTimestamp = {
