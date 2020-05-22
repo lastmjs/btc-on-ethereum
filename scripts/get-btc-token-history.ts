@@ -78,7 +78,7 @@ async function fetchLogs(
     allEthereumLogs: ReadonlyArray<EthereumLog> = []
 ): Promise<ReadonlyArray<EthereumLog>> {
 
-    console.log('fetchBurnLogs');
+    console.log(`fetchLogs: ${mintOrBurn}`);
     console.log('fromBlock', fromBlock);
     console.log('toBlock', toBlock);
 
