@@ -54,6 +54,8 @@ class BECharts extends HTMLElement {
                     items: []
                 }).items.map((item) => parseFloat(item.dividedBy(10 ** btcToken.decimals)));
             
+                console.log(`${btcToken.name} sum: `, amounts[amounts.length - 1]);
+
                 return {
                     name: btcToken.name,
                     dates,
