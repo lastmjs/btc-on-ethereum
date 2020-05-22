@@ -171,10 +171,12 @@ class BEApp extends HTMLElement {
                         </div>
                         ${state.btcTokens.map((btcToken: Readonly<BTCToken>) => {
                             return html`
-                                <div class="be-token-card" @click=${() => this.store.showingChartName = btcToken.name.toLowerCase()} @mouseover=${() => this.store.showingChartName = btcToken.name.toLowerCase()}>
+                                <div class="be-token-card" @click=${() => this.store.showingChartName = btcToken.name} @mouseover=${() => this.store.showingChartName = btcToken.name}>
                                     <div class="be-amount-btc-text">${btcToken.totalSupply === 'NOT_SET' ? 'Loading...' : formatBigNumberBTCForDisplay(btcToken.totalSupply)}</div>
                                     <div class="be-amount-usd-text">${btcToken.usdPrice === 'NOT_SET' ? 'Loading...' : formatBigNumberUSDForDisplay(btcToken.usdPrice)}</div>
                                     <div class="be-description-text">${btcToken.name}</div>
+                                    <br>
+                                    <a href="${btcToken.href}" target="_blank">More info</a>
                                 </div>
                             `;
                         })}
