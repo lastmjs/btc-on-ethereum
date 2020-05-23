@@ -92,6 +92,7 @@ class BEApp extends HTMLElement {
                     width: 100vw;
                     height: 100vh;
                     margin: 0;
+                    overflow: hidden;
                 }
 
                 .be-app-main-container {
@@ -103,6 +104,7 @@ class BEApp extends HTMLElement {
                     padding-left: calc(50px + 1vmin);
                     display: flex;
                     flex-direction: column;
+                    overflow: hidden;
                 }
 
                 @media (max-width: 1280px) {
@@ -178,8 +180,15 @@ class BEApp extends HTMLElement {
                     flex-shrink: 0;
                 }
 
+                @media (max-width: 1280px) {
+                    .be-app-chart-and-info-container {
+                        flex-grow: 0;
+                        height: auto;
+                    }
+                }
+
                 .be-app-charts-container {
-                    width: 50vw;
+                    width: 75%;
                 }
 
                 @media (max-width: 1280px) {
@@ -196,6 +205,12 @@ class BEApp extends HTMLElement {
                     overflow-y: scroll;
                     box-sizing: border-box;
                     padding: calc(25px + 1vmin);
+                }
+
+                @media (max-width: 1280px) {
+                    .be-app-description-container {
+                        overflow-y: unset;
+                    }
                 }
 
                 .be-app-extra-info {
