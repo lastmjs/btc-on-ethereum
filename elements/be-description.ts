@@ -29,6 +29,7 @@ class BEDescription extends HTMLElement {
                 .be-description-title {
                     font-size: 30px;
                     font-weight: bold;
+                    white-space: nowrap;
                 }
 
                 @media (max-width: 1280px) {
