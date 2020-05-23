@@ -7,6 +7,7 @@ import {
 } from '../index.d';
 import { btcTokens } from '../services/btc-tokens';
 import './be-charts';
+import './be-description';
 
 type State = {
     readonly btcTokens: ReadonlyArray<BTCToken>;
@@ -93,27 +94,51 @@ class BEApp extends HTMLElement {
                     margin: 0;
                 }
 
-                .be-token-main-container {
+                .be-app-main-container {
                     width: 100%;
                     height: 100%;
                     box-sizing: border-box;
-                    padding: calc(50px + 1vmin);
-                    overflow-y: scroll;
+                    padding-top: calc(50px + 1vmin);
+                    padding-right: calc(50px + 1vmin);
+                    padding-left: calc(50px + 1vmin);
                     display: flex;
                     flex-direction: column;
-                    overflow: hidden;
                 }
 
-                .be-token-card-container {
+                @media (max-width: 1280px) {
+                    .be-app-main-container {
+                        overflow-y: scroll;
+                    }
+                }
+
+                .be-app-tokens-and-charts-container {
+                    display: flex;
+                    overflow: hidden;
+                    flex-direction: row-reverse;
+                }
+
+                @media (max-width: 1280px) {
+                    .be-app-tokens-and-charts-container {
+                        flex-direction: column;
+                        overflow-y: scroll;
+                    }
+                }
+
+                .be-app-token-card-container {
                     display: flex;
                     flex-direction: column;
                     overflow-y: auto;
                     height: 100%;
                     justify-content: flex-start;
-                    /* align-self: flex-start; */
                 }
 
-                .be-token-card {
+                @media (max-width: 1280px) {
+                    .be-app-token-card-container {
+                        overflow-y: unset;
+                    }
+                }
+
+                .be-app-token-card {
                     color: orange;
                     border: solid 5px grey;
                     padding: calc(25px + 1vmin);
@@ -126,74 +151,131 @@ class BEApp extends HTMLElement {
                     text-decoration: none;
                 }
 
-                .be-amount-btc-text {
+                .be-app-amount-btc-text {
                     color: orange;
                     font-size: calc(50px + 1vmin);
                 }
 
-                .be-amount-usd-text {
+                .be-app-amount-usd-text {
                     color: green;
                     font-size: calc(30px + 1vmin);
                 }
 
-                .be-description-text {
+                .be-app-description-text {
                     color: grey;
                     font-size: calc(25px + 1vmin);
                     text-align: center;
                 }
 
-                .be-chart-and-info-container {
+                .be-app-chart-and-info-container {
                     height: 100%;
                     display: flex;
                     flex-direction: column;
                     flex-grow: 1;
                     align-items: center;
                 }
+
+                .be-app-charts-container {
+                    width: 50vw;
+                }
+
+                @media (max-width: 1280px) {
+                    .be-app-charts-container {
+                        width: 100%;
+                    }
+                }
+
+                .be-app-description-container {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    overflow-y: scroll;
+                    box-sizing: border-box;
+                    padding: calc(25px + 1vmin);
+                }
+
+                .be-app-extra-info {
+                    color: grey;
+                    display: flex;
+                    justify-content: center;
+                    font-size: calc(5px + 1vmin);
+                    box-sizing: border-box;
+                    padding: calc(10px + 1vmin);
+                }
+
+                .be-app-extra-info-item {
+                    flex: 1;
+                    text-align: center;
+                }
+
+                .be-app-ethereum-logo {
+                    position: fixed;
+                    opacity: .25;
+                    left: 25px;
+                    top: 25px;
+                }
+
+                .be-app-bitcoin-logo {
+                    position: fixed;
+                    opacity: .25;
+                    right: 25px;
+                    bottom: 25px;
+                    pointer-events: none;
+                }
+
+                .be-app-logo-height {
+                    max-height: 10vh;
+                }
             </style>
 
-            <div style="position: fixed; opacity: .25; right: 25px; bottom: 25px">
-                <img src="bitcoin.png" style="max-height: 10vh">
+            <div class="be-app-bitcoin-logo">
+                <img src="bitcoin.png" class="be-app-logo-height">
             </div>
 
-            <div style="position: fixed; opacity: .25; left: 25px; top: 25px">
-                <img src="ethereum.png" style="max-height: 10vh">
+            <div class="be-app-ethereum-logo">
+                <img src="ethereum.png" class="be-app-logo-height">
             </div>
 
-            <div class="be-token-main-container">
+            <div class="be-app-main-container">
 
-                <div style="display: flex; overflow: hidden">
+                <div class="be-app-tokens-and-charts-container">
                 
-                    <div class="be-token-card-container">
-                        <div class="be-token-card" @click=${() => this.store.showingChartName = 'total'} @mouseover=${() => this.store.showingChartName = 'total'}>
-                            <div class="be-amount-btc-text">${totalResult === 'Loading...' ? totalResult : formatBigNumberBTCForDisplay(totalResult)}</div>
-                            <div class="be-amount-usd-text">${totalResult === 'Loading...' ? 'Loading...' : formatBigNumberUSDForDisplay(totalResult.multipliedBy(state.btcPriceInUSD))}</div>
-                            <div class="be-description-text">Total BTC on Ethereum</div>
+                    <div class="be-app-chart-and-info-container">
+                        <div class="be-app-charts-container">
+                            <be-charts .showing=${state.showingChartName}></be-charts>
+                        </div>
+                        <div class="be-app-description-container">
+                            <be-description .showing=${state.showingChartName}></be-description>
+                        </div>
+                    </div>
+
+                    <div class="be-app-token-card-container">
+                        <div class="be-app-token-card" @click=${() => this.store.showingChartName = 'total'} @mouseover=${() => this.store.showingChartName = 'total'}>
+                            <div class="be-app-amount-btc-text">${totalResult === 'Loading...' ? totalResult : formatBigNumberBTCForDisplay(totalResult)}</div>
+                            <div class="be-app-amount-usd-text">${totalResult === 'Loading...' ? 'Loading...' : formatBigNumberUSDForDisplay(totalResult.multipliedBy(state.btcPriceInUSD))}</div>
+                            <div class="be-app-description-text">Total BTC on Ethereum</div>
                         </div>
                         ${state.btcTokens.map((btcToken: Readonly<BTCToken>) => {
                             return html`
-                                <div class="be-token-card" @click=${() => this.store.showingChartName = btcToken.name} @mouseover=${() => this.store.showingChartName = btcToken.name}>
-                                    <div class="be-amount-btc-text">${btcToken.totalSupply === 'NOT_SET' ? 'Loading...' : formatBigNumberBTCForDisplay(btcToken.totalSupply)}</div>
-                                    <div class="be-amount-usd-text">${btcToken.usdPrice === 'NOT_SET' ? 'Loading...' : formatBigNumberUSDForDisplay(btcToken.usdPrice)}</div>
-                                    <div class="be-description-text">${btcToken.name}</div>
+                                <div class="be-app-token-card" @click=${() => this.store.showingChartName = btcToken.name} @mouseover=${() => this.store.showingChartName = btcToken.name}>
+                                    <div class="be-app-amount-btc-text">${btcToken.totalSupply === 'NOT_SET' ? 'Loading...' : formatBigNumberBTCForDisplay(btcToken.totalSupply)}</div>
+                                    <div class="be-app-amount-usd-text">${btcToken.usdPrice === 'NOT_SET' ? 'Loading...' : formatBigNumberUSDForDisplay(btcToken.usdPrice)}</div>
+                                    <div class="be-app-description-text">${btcToken.name}</div>
                                     <br>
                                     <a href="${btcToken.href}" target="_blank">More info</a>
                                 </div>
                             `;
                         })}
                     </div>
+                </div>
 
-                    <div class="be-chart-and-info-container">
-                        <div style="width: 50vw;">
-                            <be-charts .showing=${state.showingChartName}></be-charts>
-                        </div>
-                        <div style="position: fixed; bottom: calc(25px + 1vmin); color: grey; display: flex; flex-direction: column; align-items: center; font-size: calc(10px + 1vmin); margin-top: calc(50px + 1vmin); justify-self: flex-end">
-                            <div>Donations: 0x1139c4Fbc7F8AC3eE07a280af1c4C62cc04f7Df6</div>
-                            <div>See also <a href="https://usdonethereum.com" target="_blank">USD on Ethereum</a></div>
-                            <div>Feedback (especially any missed tokens): <a href="https://twitter.com/lastmjs" target="_blank">Twitter</a>, <a href="https://t.me/lastmjs" target="_blank">Telegram</a>, <a href="mailto:jordan.michael.last@gmail.com">Email</a></div>
-                            <div><a href="privacy.html">Privacy</a></div>
-                            <div><a href="oss-attribution/attribution.txt">Open Source</a></div>
-                        </div>
-                    </div>
+                <div class="be-app-extra-info">
+                    <div class="be-app-extra-info-item">Donations: 0x1139c4Fbc7F8AC3eE07a280af1c4C62cc04f7Df6</div>
+                    <div class="be-app-extra-info-item">See also <a href="https://usdonethereum.com" target="_blank">USD on Ethereum</a></div>
+                    <div class="be-app-extra-info-item">Feedback (especially any missed tokens): <a href="https://twitter.com/lastmjs" target="_blank">Twitter</a>, <a href="https://t.me/lastmjs" target="_blank">Telegram</a>, <a href="mailto:jordan.michael.last@gmail.com">Email</a></div>
+                    <div class="be-app-extra-info-item"><a href="privacy.html">Privacy</a></div>
+                    <div class="be-app-extra-info-item"><a href="oss-attribution/attribution.txt">Open Source</a></div>
                 </div>
             </div>
         `;

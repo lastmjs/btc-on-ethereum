@@ -1,6 +1,7 @@
 import { BTCToken } from '../index.d';
 import BigNumber from 'bignumber.js';
 import { ethers } from 'ethers';
+import { html } from 'lit-html';
 
 export const btcTokens: ReadonlyArray<BTCToken> = [
     {
@@ -23,7 +24,18 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         ],
         getAmountFromLog: (log: Readonly<ethers.providers.Log>) => {
             return new BigNumber(log.data).toString();
-        }
+        },
+        description: html`
+            <div class="be-description-title">WBTC</div>
+
+            <div style="width: 50%">
+                <!-- <p class="be-description-paragraph">
+                    WBTC is an ERC20 token, backed 1:1 with BTC, and held in BitGo's custody.
+                </p>
+
+                <p class="be-description-paragraph">BitGo is a regulated custodian.</p> -->
+            </div>
+        `
     },
     {
         name: 'imBTC',
@@ -45,7 +57,10 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         ],
         getAmountFromLog: (log: Readonly<ethers.providers.Log>) => {
             return new BigNumber(log.data.slice(0, 66)).toString();
-        }
+        },
+        description: html`
+            <div class="be-description-title">imBTC</div>
+        `
     },
     {
         name: 'sBTC',
@@ -67,7 +82,10 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         ],
         getAmountFromLog: (log: Readonly<ethers.providers.Log>) => {
             return new BigNumber(log.data.slice(0, 66)).toString();
-        }
+        },
+        description: html`
+            <div class="be-description-title">sBTC</div>
+        `
     },
     {
         name: 'pBTC',
@@ -89,7 +107,10 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         ],
         getAmountFromLog: (log: Readonly<ethers.providers.Log>) => {
             return new BigNumber(log.data.slice(0, 66)).toString();
-        }
+        },
+        description: html`
+            <div class="be-description-title">pBTC</div>
+        `
     },
     {
         name: 'TBTC',
@@ -114,7 +135,10 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         ],
         getAmountFromLog: (log: Readonly<ethers.providers.Log>) => {
             return new BigNumber(log.data).toString();
-        }
+        },
+        description: html`
+            <div class="be-description-title">TBTC</div>
+        `
     },
     {
         name: 'HBTC',
@@ -136,7 +160,10 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         ],
         getAmountFromLog: (log: Readonly<ethers.providers.Log>) => {
             return new BigNumber(log.data.slice(0, 66)).toString();
-        }
+        },
+        description: html`
+            <div class="be-description-title">HBTC</div>
+        `
     },
     {
         name: 'renBTC',
@@ -161,6 +188,9 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         ],
         getAmountFromLog: (log: Readonly<ethers.providers.Log>) => {
             return new BigNumber(log.data).toString();
-        }
+        },
+        description: html`
+            <div class="be-description-title">renBTC</div>
+        `
     }
 ];
