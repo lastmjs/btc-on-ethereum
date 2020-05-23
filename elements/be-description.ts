@@ -27,19 +27,41 @@ class BEDescription extends HTMLElement {
                 }
 
                 .be-description-title {
-                    font-size: calc(25px + 1vmin);
+                    font-size: 30px;
                     font-weight: bold;
                 }
 
+                @media (max-width: 1280px) {
+                    .be-description-title {
+                        font-size: 50px;
+                    }
+                }
+
                 .be-description-paragraph {
-                    font-size: calc(10px + 1vmin);
+                    font-size: 20px + 1vmin;
+                }
+
+                @media (max-width: 1280px) {
+                    .be-description-paragraph {
+                        font-size: 40px;
+                    }
+                }
+
+                .be-description-paragraphs-container {
+                    width: 50%;
+                }
+
+                @media (max-width: 1280px) {
+                    .be-description-paragraphs-container {
+                        width: 100%;
+                    }
                 }
             </style>
 
             <div class="be-description-main-container">
                 <div style="${state.showing === 'total' ? '' : 'display: none'}" class="be-description-token-container">
                     <div class="be-description-title">BTC on Ethereum</div>
-                    <div style="width: 50%">
+                    <div class="be-description-paragraphs-container">
                         <p class="be-description-paragraph">
                             Welcome to BTC on Ethereum, a project that attempts to aggregate information about all significant sources of BTC that have been tokenized onto the Ethereum blockchain.
                         </p>
