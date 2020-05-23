@@ -8,6 +8,7 @@ import {
 import { btcTokens } from '../services/btc-tokens';
 import './be-charts';
 import './be-description';
+import 'smoothscroll-polyfill';
 
 type State = {
     readonly btcTokens: ReadonlyArray<BTCToken>;
