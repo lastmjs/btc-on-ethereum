@@ -280,7 +280,14 @@ class BEApp extends HTMLElement {
                         </div>
                         ${state.btcTokens.map((btcToken: Readonly<BTCToken>) => {
                             return html`
-                                <div class="be-app-token-card" @click=${() => this.store.showingChartName = btcToken.name} @mouseover=${() => this.store.showingChartName = btcToken.name}>
+                                <div class="be-app-token-card" @mouseup=${() => {
+                                    this.store.showingChartName = btcToken.name;
+                                    this.querySelector('.be-app-tokens-and-charts-container').scrollTo({
+                                        top: 0,
+                                        left: 0,
+                                        behavior: 'smooth'
+                                    })
+                                }} @mouseover=${() => this.store.showingChartName = btcToken.name}>
                                     <div class="be-app-amount-btc-text">${btcToken.totalSupply === 'NOT_SET' ? 'Loading...' : formatBigNumberBTCForDisplay(btcToken.totalSupply)}</div>
                                     <div class="be-app-amount-usd-text">${btcToken.usdPrice === 'NOT_SET' ? 'Loading...' : formatBigNumberUSDForDisplay(btcToken.usdPrice)}</div>
                                     <div class="be-app-description-text">${btcToken.name}</div>
