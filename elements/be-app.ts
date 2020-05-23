@@ -149,6 +149,7 @@ class BEApp extends HTMLElement {
                     align-items: center;
                     cursor: pointer;
                     text-decoration: none;
+                    flex-shrink: 0;
                 }
 
                 .be-app-amount-btc-text {
