@@ -181,7 +181,7 @@ class BEApp extends HTMLElement {
 
                 @media (max-width: 1280px) {
                     .be-app-charts-container {
-                        width: 90vw;
+                        width: 100%;
                     }
                 }
 
@@ -221,6 +221,7 @@ class BEApp extends HTMLElement {
                     opacity: .25;
                     right: 25px;
                     bottom: 25px;
+                    pointer-events: none;
                 }
 
                 .be-app-logo-height {

@@ -49,12 +49,8 @@ class BEDescription extends HTMLElement {
                         </p>
     
                         <p class="be-description-paragraph">
-                            Explore the different BTC tokens by hovering over or clicking on them in the sidebar to the left.
-                        </p>
-    
-                        <p class="be-description-paragraph">
-                            If you see any incorrect or missing information, especially missing tokens, please don't hesitate to reach out.
-                        </p>
+                            Explore the different BTC tokens, and if you see any incorrect or missing information, especially missing tokens, please don't hesitate to reach out.
+                        </p>    
                     </div>
                 </div>
 

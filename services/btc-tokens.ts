@@ -29,11 +29,11 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
             <div class="be-description-title">WBTC</div>
 
             <div style="width: 50%">
-                <p class="be-description-paragraph">
+                <!-- <p class="be-description-paragraph">
                     WBTC is an ERC20 token, backed 1:1 with BTC, and held in BitGo's custody.
                 </p>
 
-                <p class="be-description-paragraph">BitGo is a regulated custodian.</p>
+                <p class="be-description-paragraph">BitGo is a regulated custodian.</p> -->
             </div>
         `
     },
