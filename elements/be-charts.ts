@@ -14,18 +14,22 @@ type State = {
         readonly name: string;
         readonly dates: ReadonlyArray<string>;
         readonly amounts: ReadonlyArray<number>
-    }>
+    }>;
+    readonly loading: boolean;
 };
 
 const InitialState: Readonly<State> = {
     btcTokenChartInfos: [],
-    showing: ''
+    showing: '',
+    loading: false
 };
 
 class BECharts extends HTMLElement {
     readonly store = createObjectStore(InitialState, (state: Readonly<State>) => litRender(this.render(state), this), this);
 
     connectedCallback() {
+
+        this.store.loading = true;
 
         setTimeout(async () => {
 
@@ -62,6 +66,8 @@ class BECharts extends HTMLElement {
                     amounts
                 };
             }));
+
+            this.store.loading = false;
         });
     }
 
@@ -161,7 +167,22 @@ class BECharts extends HTMLElement {
 
     render(state: Readonly<State>) {
         return html`
-            <div>
+            <style>
+                .be-charts-loading-container {
+                    display: flex;
+                    height: 100%;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    font-size: calc(30px + 1vmin);
+                }
+            </style>
+            
+            <div style="height: 100%; width: 100%">
+                <div style="${state.loading ? '' : 'display: none'}" class="be-charts-loading-container">Loading charts...</div>
+
                 <div ?hidden=${state.showing !== 'total'}>
                     <canvas id="total-canvas"></canvas>
                 </div>
