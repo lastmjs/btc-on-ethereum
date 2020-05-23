@@ -137,7 +137,7 @@ class BEApp extends HTMLElement {
 
                 @media (max-width: 1280px) {
                     .be-app-token-card-container {
-                        overflow-y: unset;
+                        flex-grow: 1;
                     }
                 }
 
@@ -182,8 +182,8 @@ class BEApp extends HTMLElement {
 
                 @media (max-width: 1280px) {
                     .be-app-chart-and-info-container {
-                        flex-grow: 0;
-                        height: auto;
+                        height: 75%;
+                        overflow-y: scroll;
                     }
                 }
 
@@ -194,6 +194,7 @@ class BEApp extends HTMLElement {
                 @media (max-width: 1280px) {
                     .be-app-charts-container {
                         width: 100%;
+                        flex-grow: 1;
                     }
                 }
 
@@ -210,6 +211,7 @@ class BEApp extends HTMLElement {
                 @media (max-width: 1280px) {
                     .be-app-description-container {
                         overflow-y: unset;
+                        flex-grow: 1;
                     }
                 }
 
