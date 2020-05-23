@@ -117,6 +117,7 @@ class BEApp extends HTMLElement {
                     display: flex;
                     overflow: hidden;
                     flex-direction: row-reverse;
+                    height: 100%;
                 }
 
                 @media (max-width: 1280px) {
