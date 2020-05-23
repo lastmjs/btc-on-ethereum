@@ -175,6 +175,7 @@ class BEApp extends HTMLElement {
                     flex-direction: column;
                     flex-grow: 1;
                     align-items: center;
+                    flex-shrink: 0;
                 }
 
                 .be-app-charts-container {
