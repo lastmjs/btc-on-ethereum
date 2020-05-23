@@ -189,6 +189,7 @@ class BEApp extends HTMLElement {
 
                 .be-app-charts-container {
                     width: 75%;
+                    /* min-height: 50%; */
                 }
 
                 @media (max-width: 1280px) {
