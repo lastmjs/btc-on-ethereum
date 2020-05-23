@@ -128,8 +128,9 @@ class BEApp extends HTMLElement {
                     display: flex;
                     flex-direction: column;
                     overflow-y: auto;
-                    height: 100%;
+                    min-height: 100%;
                     justify-content: flex-start;
+                    flex-shrink: 0;
                 }
 
                 @media (max-width: 1280px) {
