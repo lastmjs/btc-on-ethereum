@@ -250,7 +250,27 @@ class BEApp extends HTMLElement {
                 .be-app-logo-height {
                     max-height: 10vh;
                 }
+
+                .be-app-top-notice {
+                    color: white;
+                    position: fixed;
+                    top: 20px;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                a:link {
+                    color: orange;
+                }
+
+                a:visited {
+                    color: grey;
+                }
             </style>
+
+            <div class="be-app-top-notice">
+                Preorder the book: <a href="bitcoins-journey-to-ethereum.html" target="_blank">Bitcoin's Journey to Ethereum</a>
+            </div>
 
             <div class="be-app-bitcoin-logo">
                 <img src="bitcoin.png" class="be-app-logo-height">
