@@ -108,7 +108,7 @@ class BEApp extends HTMLElement {
                     overflow: hidden;
                 }
 
-                @media (max-width: 1024px) {
+                @media (max-width: 768px) {
                     .be-app-main-container {
                         overflow-y: scroll;
                     }
@@ -121,7 +121,7 @@ class BEApp extends HTMLElement {
                     height: 100%;
                 }
 
-                @media (max-width: 1024px) {
+                @media (max-width: 768px) {
                     .be-app-tokens-and-charts-container {
                         flex-direction: column;
                         overflow-y: scroll;
@@ -137,7 +137,7 @@ class BEApp extends HTMLElement {
                     flex-shrink: 0;
                 }
 
-                @media (max-width: 1024px) {
+                @media (max-width: 768px) {
                     .be-app-token-card-container {
                         flex-grow: 1;
                     }
@@ -182,7 +182,7 @@ class BEApp extends HTMLElement {
                     flex-shrink: 0;
                 }
 
-                @media (max-width: 1024px) {
+                @media (max-width: 768px) {
                     .be-app-chart-and-info-container {
                         height: 75%;
                         overflow-y: scroll;
@@ -194,7 +194,7 @@ class BEApp extends HTMLElement {
                     /* min-height: 50%; */
                 }
 
-                @media (max-width: 1024px) {
+                @media (max-width: 768px) {
                     .be-app-charts-container {
                         width: 100%;
                         flex-grow: 1;
@@ -211,7 +211,7 @@ class BEApp extends HTMLElement {
                     padding: calc(25px + 1vmin);
                 }
 
-                @media (max-width: 1024px) {
+                @media (max-width: 768px) {
                     .be-app-description-container {
                         overflow-y: unset;
                         flex-grow: 1;
