@@ -32,7 +32,7 @@ class BEDescription extends HTMLElement {
                     white-space: nowrap;
                 }
 
-                @media (max-width: 1280px) {
+                @media (max-width: 1024px) {
                     .be-description-title {
                         font-size: 50px;
                     }
@@ -42,7 +42,7 @@ class BEDescription extends HTMLElement {
                     font-size: 20px + 1vmin;
                 }
 
-                @media (max-width: 1280px) {
+                @media (max-width: 1024px) {
                     .be-description-paragraph {
                         font-size: 40px;
                     }
@@ -52,7 +52,7 @@ class BEDescription extends HTMLElement {
                     width: 50%;
                 }
 
-                @media (max-width: 1280px) {
+                @media (max-width: 1024px) {
                     .be-description-paragraphs-container {
                         width: 100%;
                     }
