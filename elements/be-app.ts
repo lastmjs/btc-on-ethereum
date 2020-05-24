@@ -108,7 +108,7 @@ class BEApp extends HTMLElement {
                     overflow: hidden;
                 }
 
-                @media (max-width: 768px) {
+                @media (max-width: 1280px) {
                     .be-app-main-container {
                         overflow-y: scroll;
                     }
@@ -121,7 +121,7 @@ class BEApp extends HTMLElement {
                     height: 100%;
                 }
 
-                @media (max-width: 768px) {
+                @media (max-width: 1280px) {
                     .be-app-tokens-and-charts-container {
                         flex-direction: column;
                         overflow-y: scroll;
@@ -137,7 +137,7 @@ class BEApp extends HTMLElement {
                     flex-shrink: 0;
                 }
 
-                @media (max-width: 768px) {
+                @media (max-width: 1280px) {
                     .be-app-token-card-container {
                         flex-grow: 1;
                     }
@@ -179,13 +179,14 @@ class BEApp extends HTMLElement {
                     flex-direction: column;
                     flex-grow: 1;
                     align-items: center;
-                    flex-shrink: 0;
+                    /* flex-shrink: 0; */
                 }
 
-                @media (max-width: 768px) {
+                @media (max-width: 1280px) {
                     .be-app-chart-and-info-container {
                         height: 75%;
                         overflow-y: scroll;
+                        flex-shrink: 0;
                     }
                 }
 
@@ -194,7 +195,7 @@ class BEApp extends HTMLElement {
                     /* min-height: 50%; */
                 }
 
-                @media (max-width: 768px) {
+                @media (max-width: 1280px) {
                     .be-app-charts-container {
                         width: 100%;
                         flex-grow: 1;
@@ -211,7 +212,7 @@ class BEApp extends HTMLElement {
                     padding: calc(25px + 1vmin);
                 }
 
-                @media (max-width: 768px) {
+                @media (max-width: 1280px) {
                     .be-app-description-container {
                         overflow-y: unset;
                         flex-grow: 1;
