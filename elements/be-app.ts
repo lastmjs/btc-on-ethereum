@@ -297,7 +297,7 @@ class BEApp extends HTMLElement {
 
                 <div class="be-app-top-menu-container">
                     <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
-                        <a href="/">Tokens</a>
+                        <a href="/">BTC Tokens</a>
                     </div>
                     <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
                         <a href="/blog/blog.html">Blog</a>
