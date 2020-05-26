@@ -267,6 +267,18 @@ class BEApp extends HTMLElement {
                 a:visited {
                     color: grey;
                 }
+
+                .be-app-top-menu-container {
+                    display: flex;
+                    width: 100%;
+                    color: orange;
+                    justify-content: flex-end;
+                    cursor: pointer;
+                }
+
+                .be-app-top-menu-container a:visited {
+                    color: orange;
+                }
             </style>
 
             <div class="be-app-top-notice">
@@ -282,6 +294,15 @@ class BEApp extends HTMLElement {
             </div>
 
             <div class="be-app-main-container">
+
+                <div class="be-app-top-menu-container">
+                    <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
+                        <a href="/">Tokens</a>
+                    </div>
+                    <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
+                        <a href="/blog/blog.html">Blog</a>
+                    </div>
+                </div>
 
                 <div class="be-app-tokens-and-charts-container">
                 
