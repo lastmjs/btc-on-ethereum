@@ -1,7 +1,9 @@
 import { BTCToken } from '../index.d';
 import BigNumber from 'bignumber.js';
 import { ethers } from 'ethers';
-import { html } from 'lit-html'; // TODO this fails in ts-node, probably need to use allowjs or something
+// import { html } from 'lit-html'; // TODO this fails in ts-node, probably need to use allowjs or something
+
+function html() {}
 
 export const btcTokens: ReadonlyArray<BTCToken> = [
     {
