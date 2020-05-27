@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Why does Bitcoin need my ID?</title>
+        <script type="module" src="/node_modules/zero-md/build/zero-md.min.js"></script>
+        <meta description="">
+        <link rel="icon" href="/bitcoin.png">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61431139-5"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-61431139-5', { anonymize_ip: true });
+        </script>
+    </head>
+
+    <body>
+        <style>
+            body {
+                background-color: black;
+                font-family: sans-serif;
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                overflow-x: hidden;
+            }
+
+            a:link {
+                color: orange;
+            }
+
+            a:visited {
+                color: grey;
+            }
+
+            .main-container {
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                padding-top: calc(50px + 1vmin);
+                padding-right: calc(50px + 1vmin);
+                padding-left: calc(50px + 1vmin);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .extra-info {
+                color: grey;
+                display: flex;
+                justify-content: center;
+                font-size: calc(5px + 1vmin);
+                box-sizing: border-box;
+                padding: calc(10px + 1vmin);
+            }
+
+            .extra-info-item {
+                flex: 1;
+                text-align: center;
+            }
+
+            .top-menu-container {
+                display: flex;
+                width: 100%;
+                color: orange;
+                justify-content: flex-end;
+                cursor: pointer;
+            }
+
+            .top-menu-container a:visited {
+                color: orange;
+            }
+
+            .blog-body-container {
+                width: 50%;
+                font-size: calc(20px + 1vmin);
+            }
+
+            @media (max-width: 1280px) {
+                .blog-body-container {
+                    width: 100%;
+                }
+            }
+        </style>
+
+        <div class="main-container">
+
+            <div class="top-menu-container">
+                <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
+                    <a href="/">BTC Tokens</a>
+                </div>
+                <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
+                    <a href="/blog/blog.html">Blog</a>
+                </div>
+            </div>
+
+            <div class="blog-body-container">
+                <zero-md>
+                    <template>
+                        <style>
+                            h1 {
+                                color: white;
+                            }
+
+                            h2 {
+                                color: white;
+                            }
+
+                            h3 {
+                                color: white;
+                            }
+    
+                            p {
+                                color: white;
+                            }
+
+                            ul {
+                                color: white;
+                            }
+                        </style>
+    
+                        <xmp>
+# Why does Bitcoin need my ID?
+
+### May 26, 2020
+
+## TLDR
+
+Bitcoin does not need your ID.
+
+Obtaining or transacting Bitcoin (BTC) through intermediaries often requires identification.
+This is mostly due to regulation focused on combating money laundering, terrorism, fraud, and other crimes.
+
+## Introduction
+
+Bitcoin is a pseudonymous and permissionless network, and thus requires no real-world identification to join and use.
+
+Anyone can create a Bitcoin wallet, which consists of an address and a private key.
+The private key should obviously not be disclosed, and the address may be made public, but is a random series of characters.
+
+It's very difficult to identify someone based on a random series of characters, unless you have more information.
+That's why Bitcoin is better framed as pseudonymous, and not anonymous.
+
+Creating an empty pseudonymous wallet is one thing, but obtaining and transacting Bitcoin (BTC) is something else entirely.
+This is often where the requirement to identify yourself arises.
+
+## Disclaimer
+
+Bitcoin is generally available around the world, being in many ways inherently global as a child of the internet.
+Though Bitcoin is global, law and regulation are not.
+My analysis and thoughts are based mostly on my understanding of the laws of the United States of America.
+Laws in other jursidictions may vary, but are in my opinion likely to be similar.
+
+Also, laws and regulations can be very complex, and I am not a lawyer.
+Unfortunately, a deep analysis of each situation in which you might obtain or transact BTC is probably necessary to be sure of which laws and regulations actually apply to you and your situation.
+
+## Obtaining BTC
+
+There are many ways to obtain BTC, with differing identification requirements.
+
+For example, you can become a miner and help to secure the Bitcoin network.
+By doing this, and assuming you provide enough computational capacity to the network, you will be rewarded with BTC.
+No identification is generally required for this to take place, as there is no single company nor organization providing you with the BTC.
+
+Someone may also simply give you BTC, perhaps as a gift.
+Or you could find BTC on the ground, or in a dumpster.
+
+Again, generally, no identification would be required of you in these situations.
+
+The complexities start to arise when you want to purchase BTC.
+
+Usually if you are purchasing BTC from a business, the business will be required by law to identify you.
+These laws are generally aimed at combating things like money laundering, terrorism, fraud, and other crimes.
+
+Peer-to-peer purchases, where the seller is not acting as a business, may not carry the legal requirement to identify the purchaser.
+As we will discuss later, there are still some legal and moral complications to consider.
+
+## Transacting BTC
+
+Transacting BTC in a truly peer-to-peer manner without intermediaries is unlikely to require identification under most regulatory regimes.
+Fortunately, this is the default behavior of Bitcoin, where pseudonymous users may transact as directly as possible with each other.
+
+The complications begin to arise here when Bitcoin users are not transacting directly with each other.
+If you purchase Bitcoin from an exchange for example, you are now interacting with a business who is accepting and transmitting funds.
+
+Essentially anyone who accepts and transmits funds as a business is going to be subject to stringent regulation.
+
+## Main forms of regulation
+
+When considering the requirement to identify yourself when purchasing or using BTC, there are three main regulatory regimes that seem to come up over and over again:
+
+* Know Your Customer (KYC)
+* Anti-Money Laundering (AML)
+* Sanctions
+
+In the United States, businesses that accept and transmit funds must comply with KYC and AML measures, which in turn require identification for Bitcoin purchases and transactions.
+The main law requiring this is known as the Bank Secrecy Act.
+The Financial Crimes Enforcement Network (FinCEN) is the regulatory body responsible for administering the Bank Secrecy Act.
+Each US state may also have its own laws regarding KYC and AML.
+
+## KYC
+
+Know Your Customer is essentially a term that broadly applies to regulatory requirements for a business to identify its customers and assess their risk of committing crimes.
+It's hard to assess risk when you don't know someone's name, nationality, age, etc.
+The more information you have about someone, the clearer your understanding of them and their risk.
+
+## AML
+
+Money laundering at its core is taking dirty money received through criminal activity, and attempting to hide its origins and turn it into clean money.
+Anti-Money Laundering regulations require businesses to prevent money laundering.
+
+Requirements vary, but may require activities such as monitoring and flagging suspicous transactions and reporting high-value transfers.
+It's obvious that identification could be used as a means to combat money laundering. 
+
+## Sanctions
+
+As part of its foreign policy and national security goals, the United States applies economic and trade sanctions against certain foreign countries, groups, and individuals.
+Essentially, you cannot send money to nor receive money from any of these targeted groups or individuals.
+To do so is strictly against the law (obviously there are intricacies and exceptions, but this is generally true).
+
+The question then becomes, how can you send money to or receive money from someone without identifying them and ensure that you are complying with US sanctions?
+Complying with sanctions laws becomes much easier with identification.
+
+And in case you're curious, The Office of Foreign Assets Control (OFAC) administers and enforces US sanctions.
+
+## Other reasons for identification
+
+Besides laws requiring identification, businesses or individuals may wish to identify those they are transacting with for other reasons.
+For example, a business may wish to require identification from their users to fight fraud.
+
+As an individual, you may wish to know who you are sending BTC to or receiving it from.
+What if you are transacting with a terrorist or money-launderer? 
+What if you are transacting with someone who isn't a criminal, but is directly using those funds to do something you believe is truly wrong?
+This may be something that you want to consider.
+
+## Depends on the jurisdiction
+
+As I've been writing this piece, it's become even more apparent how staggeringly complex these systems of rules and regulations are.
+I've focused on the main regulatory requirements of the federal government of the United States of America.
+Each US state may also have their own rules.
+Nations and states and other jurisdictions around the world may also have their own slightly or drastically different rules.
+
+Through all of this complexity and the burdens it places on businesses and individuals, I hope you can also see the reason for identification.
+Whether we like it or not, identification helps stop bad people from doing bad things.
+I'm not saying it's the best way, but it's a way, and currently it's the way for many types of financial crimes.
+
+The situation is complicated and the solutions unclear.
+We need to somehow balance freedom and privacy with protection from those who wish to destroy the freedom and privacy of others.
+That's a topic for another day.
+
+## Conclusion
+
+As we have learned, Bitcoin itself requires no identification from its users.
+The complications start to arise with purchases and other transactions.
+
+Depending upon the nature of the transaction, a variety of regulatory regimes may require identification.
+These regimes include Know Your Customer (KYC), Anti-Money Laundering, and sanctions.
+
+Truly peer-to-peer and non-custodial transactions may be able to avoid the requirements for identification from some regimes, but sanctions loom without much hope for workarounds.
+
+                        </xmp>
+                    </template>
+                </zero-md>
+            </div>
+            
+            <div class="extra-info">
+                <div class="extra-info-item">Donations: 0x1139c4Fbc7F8AC3eE07a280af1c4C62cc04f7Df6</div>
+                <div class="extra-info-item">See also <a href="https://usdonethereum.com" target="_blank">USD on Ethereum</a></div>
+                <div class="extra-info-item">Feedback (especially any missed tokens): <a href="https://twitter.com/lastmjs" target="_blank">Twitter</a>, <a href="https://t.me/lastmjs" target="_blank">Telegram</a>, <a href="mailto:jordan.michael.last@gmail.com">Email</a></div>
+                <div class="extra-info-item"><a href="/privacy.html">Privacy</a></div>
+                <div class="extra-info-item"><a href="/oss-attribution/attribution.txt">Open Source</a></div>
+            </div>
+        </div>
+    </body>
+</html>
