@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Proof of Stake disadvantages</title>
+        <script type="module" src="/node_modules/zero-md/build/zero-md.min.js"></script>
+        <meta description="No consensus algorithm is perfect, and Proof of Stake has unique disadvantages. There are many issues to overcome when implementing an adequately secure Proof of Stake network. Some of the main issues to solve are general complexity, the nothing-at-stake problem, and the initial distribution of tokens.">
+        <link rel="icon" href="/bitcoin.png">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61431139-5"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-61431139-5', { anonymize_ip: true });
+        </script>
+    </head>
+
+    <body>
+        <style>
+            body {
+                background-color: black;
+                font-family: sans-serif;
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                overflow-x: hidden;
+            }
+
+            a:link {
+                color: orange;
+            }
+
+            a:visited {
+                color: grey;
+            }
+
+            .main-container {
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                padding-top: calc(50px + 1vmin);
+                padding-right: calc(50px + 1vmin);
+                padding-left: calc(50px + 1vmin);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .extra-info {
+                color: grey;
+                display: flex;
+                justify-content: center;
+                font-size: calc(5px + 1vmin);
+                box-sizing: border-box;
+                padding: calc(10px + 1vmin);
+            }
+
+            .extra-info-item {
+                flex: 1;
+                text-align: center;
+            }
+
+            .top-menu-container {
+                display: flex;
+                width: 100%;
+                color: orange;
+                justify-content: flex-end;
+                cursor: pointer;
+            }
+
+            .top-menu-container a:visited {
+                color: orange;
+            }
+
+            .blog-body-container {
+                width: 50%;
+                font-size: calc(20px + 1vmin);
+            }
+
+            @media (max-width: 1280px) {
+                .blog-body-container {
+                    width: 100%;
+                }
+            }
+        </style>
+
+        <div class="main-container">
+
+            <div class="top-menu-container">
+                <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
+                    <a href="/">BTC Tokens</a>
+                </div>
+                <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
+                    <a href="/blog/blog.html">Blog</a>
+                </div>
+            </div>
+
+            <div class="blog-body-container">
+                <zero-md>
+                    <template>
+                        <style>
+                            h1 {
+                                color: white;
+                            }
+
+                            h2 {
+                                color: white;
+                            }
+
+                            h3 {
+                                color: white;
+                            }
+    
+                            p {
+                                color: white;
+                            }
+
+                            ul {
+                                color: white;
+                            }
+                        </style>
+    
+                        <xmp>
+# Proof of Stake disadvantages
+
+### May 29, 2020
+
+## TLDR
+
+No consensus algorithm is perfect, and Proof of Stake has unique disadvantages.
+There are many issues to overcome when implementing an adequately secure Proof of Stake network.
+Some of the main issues to solve are general complexity, the nothing-at-stake problem, and the initial distribution of tokens.
+
+## Introduction
+
+In the world of blockchains, there are two main consensus algorithms that have received major attention and implementation work.
+
+The first is known as Proof of Work.
+It powers Bitcoin, Ethereum, and many other blockchain networks.
+It has served its purposes well for nearly a decade.
+
+But Proof of Work leaves much to be desired.
+
+Proof of Stake has been touted as a potential successor to Proof of Work.
+It is potentially more secure, more decentralized, and more scalable.
+
+But it is unlikely that Proof of Stake comes without its own trade-offs and unique challenges.
+
+## A myriad of challenges
+
+Building a system that is decentralized, secure, and scalable brings many challenges.
+Because of the great power a decentralized, secure, and scalable distributed system will bring to the world, many people have worked for many years to tackle these challenges.
+
+The unique issues that afflict Proof of Stake systems cannot be explored in their entirety in the short piece that I will be writing.
+It is important to understand that there are many attack vectors by which a Proof of Stake system can be weakened and potentially ruined.
+We'll discuss only a handful of the most obvious and discussed challenges.
+
+Also, I'll be discussing Proof of Stake mostly from the perspective of Ethereum's upcoming implementation (not DPoS).
+
+## Novelty
+
+Proof of Stake is simply untried and untested in the real world.
+Bitcoin has been running successfully for nearly 10 years.
+Ethereum has been running successfully for nearly 5 years.
+
+These two blockchains alone account for a large portion of all blockchain activity.
+It's safe to say that Proof of Work has served these blockchains well and has been quite robust.
+
+Uprooting a long-running and highly scrutinized algorithm such as Proof of Work simply brings risk.
+
+Proof of Stake is new.
+It will need to be tried.
+It will need to be tested.
+In the real world.
+
+## Complexity
+
+Proof of Work is a relatively simple algorithm.
+Though mining can seem mysterious, especially when people speak incorrectly about complex math problems, it really isn't when you dig into the details.
+That's part of what makes Proof of Work so beautiful.
+
+By combining a few fundamental tenets of computer science, Proof of Work has created one of the most widely used and secure distributed systems in the world.
+
+Proof of Stake, relative to Proof of Work, is more complex.
+
+To overcome some of its unique challenges, complex mechanisms such as slashing must be implemented.
+Validators (similar to miners) must be registered and known by the system.
+Validators are continuously shuffled into groups by a randomness beacon, and these groups participate in shared key generation and leader selection.
+
+This is much more complex than brute-force guessing a random number and winning the block reward when you find it.
+
+## Nothing-at-stake
+
+Another challenge that must be solved is the fact that validating a block costs next to nothing.
+If a validator receives two conflicting blocks at the same block level, which should they choose?
+It makes economic sense for them to choose whichever one they think most other validators will choose.
+This may not be the block that has valid transactions.
+So a validator is incentivized to just sign both and get on with life.
+
+If there is no penalty for this type of behavior, then it makes sense that the behavior will be rampant.
+Solutions exist, such as slashing, but these add to the complexity of the system.
+
+## Initial distribution
+
+Mining has the nice property of having a low barrier-to-entry for initial distribution of the base asset or tokens.
+Anyone with a computer is able to join the network at will and start collecting tokens.
+
+This isn't necessarily the case with Proof of Stake, since you have to already own tokens to stake tokens and earn tokens.
+
+For Ethereum, this shouldn't be much of a problem.
+It has already had about 5 years of mining, and is traded on many exchanges around the world.
+It has good liquidity, which means many people will be able to purchase it, and many people are willing to sell it.
+
+This can't necessarily be said for other chains attempting to launch Proof of Stake networks.
+
+## The rich get richer
+
+This is somewhat tied to the initial distribution problem.
+Some people are concerned that Proof of Stake leads to a scenario in which the people who are already rich continue to become richer and richer, leaving no room for people with fewer resources to reap the rewards and become rich themselves.
+Also, besides just becoming rich, the fear is that the rich will be able to more easily take over the network and influence it for better or for worse.
+
+This is an interesting point, but isn't necessarily unique to Proof of Stake.
+
+Proof of Work has a similar problem.
+It takes a lot of resources to set up a profitable Proof of Work mining operation.
+Powerful machines must be bought, and cheap electricity scouted and procured.
+The barrier-to-entry for Proof of Work is very high.
+
+The barrier-to-entry for Proof of Stake is much lower, assuming good liquidity and distribution of the underlying staking token.
+I do not believe this will be a major problem for Ethereum, as I've discussed earlier its distribution is wide and liquidity good.
+
+It's the lower barrer-to-entry that allows both the rich and the not-so-rich to join the network with more ease compared to Proof of Work.
+For Ethereum, I believe this will lead to greater decentralization.
+
+## Conclusion
+
+There are a lot of issues to overcome with Proof of Stake.
+In my opinion, Ethereum is doing a great job at mitigating these issues.
+
+I believe we will see a beautiful and successful launch of a very robust implementation of Proof of Stake with Ethereum 2.0.
+
+The challenges are many, the risks are high, the rewards are great, and the time is now.
+</xmp>
+                    </template>
+                </zero-md>
+            </div>
+            
+            <div class="extra-info">
+                <div class="extra-info-item">Donations: 0x1139c4Fbc7F8AC3eE07a280af1c4C62cc04f7Df6</div>
+                <div class="extra-info-item">See also <a href="https://usdonethereum.com" target="_blank">USD on Ethereum</a></div>
+                <div class="extra-info-item">Feedback (especially any missed tokens): <a href="https://twitter.com/lastmjs" target="_blank">Twitter</a>, <a href="https://t.me/lastmjs" target="_blank">Telegram</a>, <a href="mailto:jordan.michael.last@gmail.com">Email</a></div>
+                <div class="extra-info-item"><a href="/privacy.html">Privacy</a></div>
+                <div class="extra-info-item"><a href="/oss-attribution/attribution.txt">Open Source</a></div>
+            </div>
+        </div>
+    </body>
+</html>
