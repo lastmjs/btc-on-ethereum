@@ -1,4 +1,5 @@
 import { html, render as litRender } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { createObjectStore } from 'reduxular';
 import { btcTokens } from '../services/btc-tokens';
 
@@ -81,7 +82,7 @@ class BEDescription extends HTMLElement {
                 ${btcTokens.map((btcToken) => {
                     return html`
                         <div style="${state.showing === btcToken.name ? '' : 'display: none'}" class="be-description-token-container">
-                            ${btcToken.description}
+                            ${unsafeHTML(btcToken.description)}
                         </div>
                     `;
                 })}

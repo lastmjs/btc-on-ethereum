@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>How many Bitcoin halvings?</title>
+        <script type="module" src="/node_modules/zero-md/build/zero-md.min.js"></script>
+        <meta description="If Bitcoin continues as currently programmed, there will be approximately 33 halvings in total. 3 halvings have already occured, the first in November of 2012, the second in July of 2016, and the third in May of 2020. Halvings will continue until approximately the year 2140, where the block reward may not be able to decrease, as it will already be at 1 satoshi, the smallest unit of Bitcoin.">
+        <link rel="icon" href="/bitcoin.png">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61431139-5"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-61431139-5', { anonymize_ip: true });
+        </script>
+    </head>
+
+    <body>
+        <style>
+            body {
+                background-color: black;
+                font-family: sans-serif;
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                overflow-x: hidden;
+            }
+
+            a:link {
+                color: orange;
+            }
+
+            a:visited {
+                color: grey;
+            }
+
+            .main-container {
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                padding-top: calc(50px + 1vmin);
+                padding-right: calc(50px + 1vmin);
+                padding-left: calc(50px + 1vmin);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .extra-info {
+                color: grey;
+                display: flex;
+                justify-content: center;
+                font-size: calc(5px + 1vmin);
+                box-sizing: border-box;
+                padding: calc(10px + 1vmin);
+            }
+
+            .extra-info-item {
+                flex: 1;
+                text-align: center;
+            }
+
+            .top-menu-container {
+                display: flex;
+                width: 100%;
+                color: orange;
+                justify-content: flex-end;
+                cursor: pointer;
+            }
+
+            .top-menu-container a:visited {
+                color: orange;
+            }
+
+            .blog-body-container {
+                width: 50%;
+                font-size: calc(20px + 1vmin);
+            }
+
+            @media (max-width: 1280px) {
+                .blog-body-container {
+                    width: 100%;
+                }
+            }
+        </style>
+
+        <div class="main-container">
+
+            <div class="top-menu-container">
+                <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
+                    <a href="/">BTC Tokens</a>
+                </div>
+                <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
+                    <a href="/blog/blog.html">Blog</a>
+                </div>
+            </div>
+
+            <div class="blog-body-container">
+                <zero-md>
+                    <template>
+                        <style>
+                            h1 {
+                                color: white;
+                            }
+
+                            h2 {
+                                color: white;
+                            }
+
+                            h3 {
+                                color: white;
+                            }
+    
+                            p {
+                                color: white;
+                            }
+
+                            ul {
+                                color: white;
+                            }
+
+                            table {
+                                color: white;
+                                /* white-space: nowrap; */
+                            }
+                        </style>
+    
+                        <xmp>
+# How many Bitcoin halvings?
+
+### May 30, 2020
+
+## TLDR
+
+If Bitcoin continues as currently programmed, there will be approximately 33 halvings in total.
+
+3 halvings have already occured, the first in November of 2012, the second in July of 2016, and the third in May of 2020.
+
+Halvings will continue until approximately the year 2140, where the block reward may not be able to decrease, as it will already be at 1 satoshi, the smallest unit of Bitcoin.
+
+## Introduction
+
+Bitcoin's mechanism for generating Bitcoins (BTC) is to reward one miner with a fixed amount of BTC approximately every 10 minutes.
+
+in January of 2009, the Bitcoin network was launched.
+The initial block reward was set to 50 BTC per block.
+
+Bitcoin is programmed to cut that reward in half every 210,000 blocks.
+Because blocks are expected to be produced every 10 minutes, we can roughly equate 210,000 blocks with 2,100,000 minutes or 35,000 hours or 1458 days or 4 years.
+
+The first halving cut the block reward from 50 BTC to 25 BTC.
+The second halving cut the block reward from 25 BTC to 12.5 BTC.
+The third halving cut the block reward from 12.5 BTC to 6.25 BTC.
+
+The halvings will continue until approximately the year 2140, when the block reward may not be able to be cut in half beacause it will have already reached 1 satoshi, the smallest Bitcoin unit.
+
+## The first halving
+
+The first halving occured in November of 2012.
+The block reward had initially started at 50 BTC at block 0, and was cut to 25 BTC at block 210,000.
+
+You can see [block 209,999 here](https://www.blockchain.com/btc/block/209999).
+Notice the reward is 50 BTC.
+
+Now look at [block 210,000 here](https://www.blockchain.com/btc/block/210000).
+Notice the reward has changed to 25 BTC.
+
+## The second halving
+
+The second halving occured in July of 2016.
+The block reward had previously been set to 25 BTC at block 210,000, and was cut to 12.5 BTC at block 420,000.
+
+You can see [block 419,999 here](https://www.blockchain.com/btc/block/419999).
+Notice the reward is 25 BTC.
+
+Now look at [block 420,000 here](https://www.blockchain.com/btc/block/420000).
+Notice the reward has changed to 12.5 BTC.
+
+## The third halving
+
+The third halving occured in May of 2020.
+The block reward had previously been set to 12.5 BTC at block 420,000, and was cut to 6.25 BTC at block 630,000.
+
+You can see [block 629,999 here](https://www.blockchain.com/btc/block/629999).
+Notice the reward is 12.5 BTC.
+
+Now look at [block 630,000 here](https://www.blockchain.com/btc/block/630000).
+Notice the reward has changed to 6.25 BTC.
+
+## 30 future halvings
+
+In addition to the first 3 halvings, 30 more halvings are likely to occur once approximately every 4 years, if Bitcoin continues as programmed.
+
+The final amounts of BTC will be mined around the year 2140.
+This is because the block reward will be set to 1 satoshi, or .00000001 BTC, in halving number 32 at block 6,720,000.
+Because 1 satoshi is the smallest unit of BTC, as the network is currently programmed, it makes sense that no more halvings will be able to occur.
+
+It is unclear to me if the block reward will technically continue at 1 satoshi, or if it will cease entirely.
+It is clear that virtually all BTC will have been mined by this time, as the total amount of BTC ever minted will have approached very very close to 21 million by this time.
+
+## Halving schedule
+
+Halving number | Approximate date | Block reward | Block number | BTC issued before next halving | Total BTC issued
+-- | -- | -- | -- | -- | --
+0   | January 2009 | 50 | 0 | 10500000 | 10500000
+1	| November 2012 |	25	| 210000 |	5250000 |	15750000																					
+2	| July 2016	| 12.5	| 420000 |	2625000 |	18375000
+3	| May 2020	| 6.25	| 630000 |	1312500 |	19687500
+4	| 2024	| 3.125	| 840000 |	656250 |	20343750
+5	| 2028	| 1.5625	| 1050000 |	328125 |	20671875
+6	| 2032	| 0.78125	| 1260000	| 164062.5	| 20835937.5
+7	| 2036	| 0.390625	| 1470000	| 82031.25	| 20917968.75
+8	| 2040	| 0.1953125	| 1680000	| 41015.625	| 20958984.38
+9	| 2044	| 0.09765625	| 1890000	| 20507.8125	| 20979492.19
+10	| 2048	| 0.048828125	| 2100000	| 10253.90625	| 20989746.09
+11	| 2052	| 0.0244140625	| 2310000	| 5126.953125	| 20994873.05
+12	| 2056	| 0.01220703125	| 2520000	| 2563.476563	| 20997436.52
+13	| 2060	| 0.006103515625	| 2730000	| 1281.738281	| 20998718.26
+14	| 2064	| 0.003051757813	| 2940000	| 640.8691406	| 20999359.13
+15	| 2068	| 0.001525878906	| 3150000	| 320.4345703	| 20999679.57
+16	| 2072	| 0.0007629394531	| 3360000	| 160.2172852	| 20999839.78
+17	| 2076	| 0.0003814697266	| 3570000	| 80.10864258	| 20999919.89
+18	| 2080	| 0.0001907348633	| 3780000	| 40.05432129	| 20999959.95
+19	| 2084	| 0.00009536743164	| 3990000	| 20.02716064	| 20999979.97
+20	| 2088	| 0.00004768371582	| 4200000	| 10.01358032	| 20999989.99
+21	| 2092	| 0.00002384185791	| 4410000	| 5.006790161	| 20999994.99
+22	| 2096	| 0.00001192092896	| 4620000	| 2.503395081	| 20999997.5
+23	| 2100	| 0.000005960464478	| 4830000	| 1.25169754	| 20999998.75
+24	| 2104	| 0.000002980232239	| 5040000	| 0.6258487701	| 20999999.37
+25	| 2108	| 0.000001490116119	| 5250000	| 0.3129243851	| 20999999.69
+26	| 2112	| 0.0000007450580597	| 5460000	| 0.1564621925	| 20999999.84
+27	| 2116	| 0.0000003725290298	| 5670000	| 0.07823109627	| 20999999.92
+28	| 2120	| 0.0000001862645149	| 5880000	| 0.03911554813	| 20999999.96
+29	| 2124	| 0.00000009313225746	| 6090000	| 0.01955777407	| 20999999.98
+30	| 2128	| 0.00000004656612873	| 6300000	| 0.009778887033	| 20999999.99
+31	| 2132	| 0.00000002328306437	| 6510000	| 0.004889443517	| 21000000
+32	| 2136	| 0.00000001164153218	| 6720000	| 0.002444721758	| 21000000
+33	| 2140	| 0.000000005820766091	| 6930000	| 0.001222360879	| 21000000
+
+## Threats to the schedule
+
+Though the schedule is programmed into the currently running majority of Bitcoin mining clients, the schedule is in no way guaranteed to be adhered to.
+The schedule is theoretical, and something that many hope is upheld.
+But there are threats to Bitcoin's adherence to the schedule.
+
+First off, developers and miners and anyone involved in making decisions on the Bitcoin network must all agree to adhere to the schedule.
+Politics and human passion and emotion all have a role to play here.
+We simply don't know if people will choose to keep the schedule.
+Being written in a currently running piece of software is hardly writting something that is truly immutable and can never be changed.
+Bitcoin carries on by social consensus, just like any other blockchain or man-made network, organization, or project.
+
+Besides unknown human decision-making processes, in my opinion the greatest threat to Bitcoin's issuance schedule is ironically the issuance schedule itself.
+As the block reward decreases, miners begin to lose the revenue coming from the block reward.
+For the miners to remain profitable and thus have economic incentive to continue mining, this loss of revenue must be compensated for elsewhere.
+
+There are two ways for this compensation to occur as Bitcoin is currently programmed.
+One is simply for the price of BTC to appreciate.
+If it appreciates enough, miners can remain profitable for potentially long periods of time.
+The length of the viability of this solution depends on how high the price can increase.
+
+Another source of revenue is transaction fees.
+For each block, the miner selected to mine a block receives the block reward and transaction fees for that block.
+Transaction fees will have to rise to match the revenue lost by the block reward declining.
+This can happen in two ways.
+One way is for the transaction fees to simply increase in price.
+Another way is for more transactions to be included per block, thus increasing the total amount of fees without necessarily increasing individual fees.
+Bitcoin has some interesting history on block limits, which limit the number of transactions per block.
+
+Another way for miners to remain profitable is for their expenses to decrease.
+Improvements in electricity and mining hardware could help lower miners' expenses and thus increase profits as the block reward declines.
+
+In my opinion, the most promising way for Bitcoin to maintain its issuance schedule is to somehow allow for more transactions per block.
+Bitcoin needs to scale, or fees will have to increase to uncomfortable levels, which I believe will hurt Bitcoin's demand and adoption.
+
+## Conclusion
+
+Bitcoin has successfully halved three times already.
+It's scheduled to halve 30 more times before all 21 million BTC have been issued.
+
+Bitcoin's issuance schedule is not sure to remain in place.
+As the block reward declines, miner's must make up for the loss in revenue somehow, either by decreasing their costs, increasing the number of transactions per block, increasing transaction fees, or waiting for BTC's price to appreciate.
+
+There are more risks to speak of with Bitcoin than I have written about here.
+Hopefully you've gained some insights into the technical details of Bitcoin's issuance schedule, and are armed with knowledge as you analyze Bitcoin's viability and value.
+
+</xmp>
+                    </template>
+                </zero-md>
+            </div>
+            
+            <div class="extra-info">
+                <div class="extra-info-item">Donations: 0x1139c4Fbc7F8AC3eE07a280af1c4C62cc04f7Df6</div>
+                <div class="extra-info-item">See also <a href="https://usdonethereum.com" target="_blank">USD on Ethereum</a></div>
+                <div class="extra-info-item">Feedback (especially any missed tokens): <a href="https://twitter.com/lastmjs" target="_blank">Twitter</a>, <a href="https://t.me/lastmjs" target="_blank">Telegram</a>, <a href="mailto:jordan.michael.last@gmail.com">Email</a></div>
+                <div class="extra-info-item"><a href="/privacy.html">Privacy</a></div>
+                <div class="extra-info-item"><a href="/oss-attribution/attribution.txt">Open Source</a></div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -15,7 +15,7 @@ export type BTCToken = {
     readonly mintTopics: Array<string | null>;
     readonly burnTopics: Array<string | null>;
     readonly getAmountFromLog: (log: Readonly<ethers.providers.Log>) => string;
-    readonly description: Readonly<TemplateResult>;
+    readonly description: string;
 };
 
 export type BlockNumberWithTimestamp = {

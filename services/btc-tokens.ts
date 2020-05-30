@@ -1,7 +1,6 @@
 import { BTCToken } from '../index.d';
 import BigNumber from 'bignumber.js';
 import { ethers } from 'ethers';
-import { html } from 'lit-html'; // TODO this fails in ts-node, probably need to use allowjs or something
 
 export const btcTokens: ReadonlyArray<BTCToken> = [
     {
@@ -25,7 +24,7 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         getAmountFromLog: (log: Readonly<ethers.providers.Log>) => {
             return new BigNumber(log.data).toString();
         },
-        description: html`
+        description: `
             <div class="be-description-title">WBTC</div>
 
             <div style="width: 50%">
@@ -58,7 +57,7 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         getAmountFromLog: (log: Readonly<ethers.providers.Log>) => {
             return new BigNumber(log.data.slice(0, 66)).toString();
         },
-        description: html`
+        description: `
             <div class="be-description-title">imBTC</div>
         `
     },
@@ -83,7 +82,7 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         getAmountFromLog: (log: Readonly<ethers.providers.Log>) => {
             return new BigNumber(log.data.slice(0, 66)).toString();
         },
-        description: html`
+        description: `
             <div class="be-description-title">sBTC</div>
         `
     },
@@ -108,7 +107,7 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         getAmountFromLog: (log: Readonly<ethers.providers.Log>) => {
             return new BigNumber(log.data.slice(0, 66)).toString();
         },
-        description: html`
+        description: `
             <div class="be-description-title">pBTC</div>
         `
     },
@@ -136,7 +135,7 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         getAmountFromLog: (log: Readonly<ethers.providers.Log>) => {
             return new BigNumber(log.data).toString();
         },
-        description: html`
+        description: `
             <div class="be-description-title">TBTC</div>
         `
     },
@@ -161,7 +160,7 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         getAmountFromLog: (log: Readonly<ethers.providers.Log>) => {
             return new BigNumber(log.data.slice(0, 66)).toString();
         },
-        description: html`
+        description: `
             <div class="be-description-title">HBTC</div>
         `
     },
@@ -189,7 +188,7 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         getAmountFromLog: (log: Readonly<ethers.providers.Log>) => {
             return new BigNumber(log.data).toString();
         },
-        description: html`
+        description: `
             <div class="be-description-title">renBTC</div>
         `
     }
