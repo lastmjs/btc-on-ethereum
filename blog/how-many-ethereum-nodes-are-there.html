@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>How many Ethereum nodes are there?</title>
+        <script type="module" src="/node_modules/zero-md/build/zero-md.min.js"></script>
+        <meta description="">
+        <link rel="icon" href="/bitcoin.png">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61431139-5"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-61431139-5', { anonymize_ip: true });
+        </script>
+    </head>
+
+    <body>
+        <style>
+            body {
+                background-color: black;
+                font-family: sans-serif;
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                overflow-x: hidden;
+            }
+
+            a:link {
+                color: orange;
+            }
+
+            a:visited {
+                color: grey;
+            }
+
+            .main-container {
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                padding-top: calc(50px + 1vmin);
+                padding-right: calc(50px + 1vmin);
+                padding-left: calc(50px + 1vmin);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .extra-info {
+                color: grey;
+                display: flex;
+                justify-content: center;
+                font-size: calc(5px + 1vmin);
+                box-sizing: border-box;
+                padding: calc(10px + 1vmin);
+            }
+
+            .extra-info-item {
+                flex: 1;
+                text-align: center;
+            }
+
+            .top-menu-container {
+                display: flex;
+                width: 100%;
+                color: orange;
+                justify-content: flex-end;
+                cursor: pointer;
+            }
+
+            .top-menu-container a:visited {
+                color: orange;
+            }
+
+            .blog-body-container {
+                width: 50%;
+                font-size: calc(20px + 1vmin);
+            }
+
+            @media (max-width: 1280px) {
+                .blog-body-container {
+                    width: 100%;
+                }
+            }
+        </style>
+
+        <div class="main-container">
+
+            <div class="top-menu-container">
+                <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
+                    <a href="/">BTC Tokens</a>
+                </div>
+                <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
+                    <a href="/blog/blog.html">Blog</a>
+                </div>
+            </div>
+
+            <div class="blog-body-container">
+                <zero-md>
+                    <template>
+                        <style>
+                            h1 {
+                                color: white;
+                            }
+
+                            h2 {
+                                color: white;
+                            }
+
+                            h3 {
+                                color: white;
+                            }
+    
+                            p {
+                                color: white;
+                            }
+
+                            ul {
+                                color: white;
+                            }
+
+                            table {
+                                color: white;
+                                /* white-space: nowrap; */
+                            }
+                        </style>
+    
+                        <xmp>
+# How many Ethereum nodes are there?
+
+### May 30, 2020
+
+## TLDR
+
+As of May 2020, there are about 7,000 Ethereum nodes.
+This is according to the only two major sources I could find, [Etherscan](https://etherscan.io/nodetracker) and [Ethernodes](https://ethernodes.org/).
+
+## Introduction
+
+Ethereum nodes run the software that implement the Ethereum protocol.
+Ethereum is a permissionless network, and anyone can run an Ethereum node.
+Nodes are run at home as well as on popular cloud providers and in large configurations.
+
+There are multiple types of nodes with varying capabilities on the network.
+Because Ethereum is permissionless, and nodes can join and exit the network at will, and from a variety of different network configurations, it is difficult to determine at any given point in time exactly how many nodes are connected to the Ethereum network.
+Besides compiling the data manually, I have found two major sources for Ethereum node counts.
+
+[Etherscan](https://etherscan.io/nodetracker) and [Ethernodes](https://ethernodes.org/).
+
+Etherscan is currently reporting 6,873 nodes, and Ethernodes is currently reporting 7,441 nodes.
+
+It is highly unlikely that these numbers are completely accurate.
+
+Though, we can make some educated guesses on how to correct the data.
+First off, it's unlikely that the counts are too high.
+
+The method by which I believe the websites are obtaining the data is through querying nodes that are connected to the internet.
+
+I wasn't able to verify how to do this myself.
+I downloaded geth, used the JSON-rpc admin_peers method to get the peer count for my node, and then grabbed the ip address of some of my peers and attempted to connect to their rpc port, 8545.
+They were all inaccessible.
+Either I am doing this wrong, there is another way, or this is the correct way and the numbers reported in the websites are lower than the true node count.
+
+It is likely that the numbers are lower than reality, since many nodes will keep their peer information private.
+There may also be nodes on private network that can't be directly accessed from the outside, since their public IP address will not map to the local IP address and port of their node.
+
+## Determining the total number of nodes
+
+This seems like a very difficult task.
+Because
+
+## Types of nodes
+
+### Full nodes
+
+### Archive nodes
+
+### Light nodes
+
+## Ethereum 2.0
+
+
+
+## Conclusion
+
+Thus we see that answering the question of how many Ethereum nodes there are...is difficult.
+There are various types of nodes, connected through various network configurations, either sharing or not information about their peers.
+It's likely that the number of nodes reported on Etherscan and Ethernodes is smaller than the true count.
+
+It is clear that Ethereum is a significant decentralized network.
+The network has been running for nearly 5 years, and nodes truly can come and go as the please.
+The blockchain keeps producing blocks.
+
+I am very excited for Ethereum 2.0, where I expect to see a significant increase in the number of nodes.
+The nice thing about Ethereum 2.0 is that there is a public registry of all participating nodes (validators).
+This will make statistics like node count simple and widely known and understood.
+
+</xmp>
+                    </template>
+                </zero-md>
+            </div>
+            
+            <div class="extra-info">
+                <div class="extra-info-item">Donations: 0x1139c4Fbc7F8AC3eE07a280af1c4C62cc04f7Df6</div>
+                <div class="extra-info-item">See also <a href="https://usdonethereum.com" target="_blank">USD on Ethereum</a></div>
+                <div class="extra-info-item">Feedback (especially any missed tokens): <a href="https://twitter.com/lastmjs" target="_blank">Twitter</a>, <a href="https://t.me/lastmjs" target="_blank">Telegram</a>, <a href="mailto:jordan.michael.last@gmail.com">Email</a></div>
+                <div class="extra-info-item"><a href="/privacy.html">Privacy</a></div>
+                <div class="extra-info-item"><a href="/oss-attribution/attribution.txt">Open Source</a></div>
+            </div>
+        </div>
+    </body>
+</html>
