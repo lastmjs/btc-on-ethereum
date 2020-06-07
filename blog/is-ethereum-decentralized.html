@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Is Ethereum decentralized?</title>
+        <script type="module" src="/node_modules/zero-md/build/zero-md.min.js"></script>
+        <meta description="">
+        <link rel="icon" href="/bitcoin.png">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61431139-5"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-61431139-5', { anonymize_ip: true });
+        </script>
+    </head>
+
+    <body>
+        <style>
+            body {
+                background-color: black;
+                font-family: sans-serif;
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                overflow-x: hidden;
+            }
+
+            a:link {
+                color: orange;
+            }
+
+            a:visited {
+                color: grey;
+            }
+
+            .main-container {
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                padding-top: calc(50px + 1vmin);
+                padding-right: calc(50px + 1vmin);
+                padding-left: calc(50px + 1vmin);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .extra-info {
+                color: grey;
+                display: flex;
+                justify-content: center;
+                font-size: calc(5px + 1vmin);
+                box-sizing: border-box;
+                padding: calc(10px + 1vmin);
+            }
+
+            .extra-info-item {
+                flex: 1;
+                text-align: center;
+            }
+
+            .top-menu-container {
+                display: flex;
+                width: 100%;
+                color: orange;
+                justify-content: flex-end;
+                cursor: pointer;
+            }
+
+            .top-menu-container a:visited {
+                color: orange;
+            }
+
+            .blog-body-container {
+                width: 50%;
+                font-size: calc(20px + 1vmin);
+            }
+
+            @media (max-width: 1280px) {
+                .blog-body-container {
+                    width: 100%;
+                }
+            }
+        </style>
+
+        <div class="main-container">
+
+            <div class="top-menu-container">
+                <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
+                    <a href="/">BTC Tokens</a>
+                </div>
+                <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
+                    <a href="/blog/blog.html">Blog</a>
+                </div>
+            </div>
+
+            <div class="blog-body-container">
+                <zero-md>
+                    <template>
+                        <style>
+                            h1 {
+                                color: white;
+                            }
+
+                            h2 {
+                                color: white;
+                            }
+
+                            h3 {
+                                color: white;
+                            }
+    
+                            p {
+                                color: white;
+                            }
+
+                            ul {
+                                color: white;
+                            }
+
+                            table {
+                                color: white;
+                                /* white-space: nowrap; */
+                            }
+                        </style>
+    
+                        <xmp>
+# Is Ethereum decentralized?
+
+### June 3, 2020
+
+## TLDR
+
+Yes.
+And no.
+Ethereum is both decentralized and centralized.
+This is not a binary question, with a yes or no answer.
+Decentralization is a spectrum.
+
+## Introduction
+
+Ethereum is both decentralized and centralized.
+It has characteristics of both.
+
+Really, decentralization is a spectrum.
+
+There are multiple factors that determine whether or not something is decentralized.
+
+And what does decentralization even mean?
+
+What I'm about to describe is according to my own thinking and research, obviously influenced by what multiple other people have said about the subject, but put into my own words.
+
+How centralized or decentralized something is, is a measure of control.
+How many entities can exert influence or control over something?
+
+For example, let's take Ethereum.
+There are multiple aspects of Ethereum that we can analyze for decentralization.
+
+We can analyze the creation of the code, the creation of the Ethereum protocol.
+We can analyze the running of that code or implementation.
+
+## Creating the Ethereum code
+
+Ethereum is a protocol, a set of rules that govern how computations should be executed and ordered.
+The protocol was created by humans, and continues to be improved and iterated on.
+Who controls this process?
+
+This is a potential point of centralization.
+Let's imagine the most centralized version of this we can think of.
+If one person were to control the creation of the Ethereum code, then that would be as centralized as we could get.
+We can start to decentralize the code creation by allowing more people to create the code.
+
+2 people involved in the process would be more decentralized than 1.
+3 people would be more decentralize than 2.
+4, 5, 6 7...keep adding people to the process of code creation, and you become more decentralized.
+
+Besides just adding people to the code creation process, we can also help decentralization by adding teams.
+Multiple teams will help decentralization.
+
+Now imagine these teams work at different independent companies, potentially in different countries around the world.
+
+We are now spreading the control of the process of code creation across many different people, teams, companies, and countries.
+This is much further decentralized than our original one person.
+
+In this respsect, let's analyze Ethereum.
+
+Ethereum has a core research team working on the Ethereum 2 specs.
+
+There are multiple client teams for Ethereum 1.0 and Ethereum 2.0.
+
+Some of these teams are independent of the Ethereum foundation.
+
+There are multiple companies involved from countries around the world.
+
+TODO look up all of the major client implementations on Ethereum 1 and Ethereum 2.
+Name them all, and if they are independent companies, and where they are located.
+
+Ethereum has multiple teams working on code implementation.
+
+Now let's analyze the running of the code.
+Ethereum exists as a network of node participants.
+These participants run Ethereum clients that implement the protocol.
+
+Let's think of the most centralized case.
+
+If one person were running one Ethereum node, then the entire fate of the network would depend on that one person.
+
+That one person could lie, cheat, and steal.
+Now imagine there were two nodes.
+Now image 3, 4, 5, 6...distribute the nodes across many people, in many countries, many companies, organizations, at home, on cloud providers.
+
+Keeping the number of nodes running, low, is dangerous for decentralization because those people could censor transactions, change the code and cheat the protocol.
+By decentralizing the physical running of the network, we create a more robust network.
+
+Now let's analyze Ethereum.
+
+Ethereum has around 7,000 nodes that we know of across the world.
+As I wrote in this article, that number is probably lower than the true number of nodes running throughout the world.
+
+Why does decentralization matter?
+
+There are a few properties that decentralization gives us, that are desirable and that really are the end goal of decentralization.
+
+Fault-tolerance is one of them.
+We want to eliminate points of failure.
+The fewer points of failure that a system has, the more likely the system is to fail entirely.
+By distributing failure points across many nodes, you greatly reduce the risk of failure.
+
+Censorship-resistance, or attack resistance.
+This is related to fault-tolerance.
+If your faults are caused by power outages or malicious users, it doesn't necessarily matter.
+Decentralization makes it much harder for adversaries to attack the network, since they must attack many more places to be effective.
+
+## The decentralization spectrum
+
+## Number of full nodes
+
+## Number of light nodes
+
+## Number of miners
+
+## Number of validators
+
+## Core development team
+
+## Client implementations
+
+## Ethereum spec, anyone can make a client
+
+## Core dev meetings
+
+The core dev meetings are held once weekly, and are recorded.
+Anyone can join these meetings.
+
+## Source of Ethereum protocol changes/proposals to change the protocol
+
+## Open source and forking
+
+The code is open source, and can be forked at any time.
+
+## Distribution of ETH
+
+Analyze the number of wallets with ETH and stuff.
+
+## Censorship-resistance
+
+## Permission
+
+Anyone can run an Ethereum node and mine Ethereum.
+Anyone can create and deploy an application onto Ethereum.
+
+## Companies
+
+There are many companies that are involved with creating application on top of Ethereum, mining Ethereum, running full and light nodes, and maintaining and creating Ethereum clients.
+
+
+## Startups
+
+## Users
+
+Users are also an important part of decentralization.
+Users can control the network by choosing where to spend their time and money.
+If they choose not to use Ethereum, they will go elsewhere.
+It is in the best interest of miners, other node operators, and the core dev teams to do what is good for users.
+
+## Exchanges
+
+Exchanges help to facilitate liquidity and distribute ETH to people.
+This is good because the more people who own ETH, the more distributed application use will be.
+
+Ethereum 2 will also turn ETH holders into potential validators/miners.
+
+## Conclusion
+
+On the spectrum of decentralization, my conclusion is that Ethereum lays on the side of decentralization.
+I believe it is very decentralized.
+
+It has thousands of nodes, probably many more than we know of.
+It has multiple independent miners.
+
+Anyone can suggest protocol changes.
+Anyone can view the source code and even fork the source code if they desire.
+ETH has had 5 years to be distributed amongst many people.
+Anyone can run a full or light node to validate transactions.
+Anyone can become a miner, though it is expensive.
+Anyone can deploy applicatons onto Ethereum without gatekeepers.
+
+Ethereum is a highly decentralized, permissionless, censorship-resistant platform.
+I think it would be hard to argue otherwise.
+
+Now, I do believe its place on the spectrum of decentralization can be argued.
+And I think Ethereum's decentralization relative to other blockchains or platforms or projects can also be debated.
+But Ethereum has strong characteristics of decentralization.
+
+
+</xmp>
+                    </template>
+                </zero-md>
+            </div>
+            
+            <div class="extra-info">
+                <div class="extra-info-item">Donations: 0x1139c4Fbc7F8AC3eE07a280af1c4C62cc04f7Df6</div>
+                <div class="extra-info-item">See also <a href="https://usdonethereum.com" target="_blank">USD on Ethereum</a></div>
+                <div class="extra-info-item">Feedback (especially any missed tokens): <a href="https://twitter.com/lastmjs" target="_blank">Twitter</a>, <a href="https://t.me/lastmjs" target="_blank">Telegram</a>, <a href="mailto:jordan.michael.last@gmail.com">Email</a></div>
+                <div class="extra-info-item"><a href="/privacy.html">Privacy</a></div>
+                <div class="extra-info-item"><a href="/oss-attribution/attribution.txt">Open Source</a></div>
+            </div>
+        </div>
+    </body>
+</html>

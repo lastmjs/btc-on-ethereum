@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>What are bitcoins made of?</title>
+        <script type="module" src="/node_modules/zero-md/build/zero-md.min.js"></script>
+        <meta description="">
+        <link rel="icon" href="/bitcoin.png">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61431139-5"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-61431139-5', { anonymize_ip: true });
+        </script>
+    </head>
+
+    <body>
+        <style>
+            body {
+                background-color: black;
+                font-family: sans-serif;
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                overflow-x: hidden;
+            }
+
+            a:link {
+                color: orange;
+            }
+
+            a:visited {
+                color: grey;
+            }
+
+            .main-container {
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                padding-top: calc(50px + 1vmin);
+                padding-right: calc(50px + 1vmin);
+                padding-left: calc(50px + 1vmin);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .extra-info {
+                color: grey;
+                display: flex;
+                justify-content: center;
+                font-size: calc(5px + 1vmin);
+                box-sizing: border-box;
+                padding: calc(10px + 1vmin);
+            }
+
+            .extra-info-item {
+                flex: 1;
+                text-align: center;
+            }
+
+            .top-menu-container {
+                display: flex;
+                width: 100%;
+                color: orange;
+                justify-content: flex-end;
+                cursor: pointer;
+            }
+
+            .top-menu-container a:visited {
+                color: orange;
+            }
+
+            .blog-body-container {
+                width: 50%;
+                font-size: calc(20px + 1vmin);
+            }
+
+            @media (max-width: 1280px) {
+                .blog-body-container {
+                    width: 100%;
+                }
+            }
+        </style>
+
+        <div class="main-container">
+
+            <div class="top-menu-container">
+                <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
+                    <a href="/">BTC Tokens</a>
+                </div>
+                <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
+                    <a href="/blog/blog.html">Blog</a>
+                </div>
+            </div>
+
+            <div class="blog-body-container">
+                <zero-md>
+                    <template>
+                        <style>
+                            h1 {
+                                color: white;
+                            }
+
+                            h2 {
+                                color: white;
+                            }
+
+                            h3 {
+                                color: white;
+                            }
+    
+                            p {
+                                color: white;
+                            }
+
+                            ul {
+                                color: white;
+                            }
+
+                            table {
+                                color: white;
+                                /* white-space: nowrap; */
+                            }
+                        </style>
+    
+                        <xmp>
+# What are bitcoins made of?
+
+### June 5, 2020
+
+That's an interesting question.
+What is the internet made of?
+What is your browser made of?
+What is electricity made of?
+These are all similar questions.
+
+Let's start with the fundamentals.
+
+Bitcoin is a distributed network that maintains the record of all bitcoins and their owners.
+
+Essentially, Bitcoin is a database distributed across thousands of computers.
+If you're interested in how many of these computers there are, see my article here.
+
+A bitcoin is made up of multiple components.
+A public key, a private key, and an address.
+
+The public key and private key are generated together.
+This is known as a key pair.
+
+Bitcoin generates a public and private key pair using the secp256k1 ECDSA algorithm.
+The address is derived from the public key.
+It is a hash of the public key, using a variety of formats.
+
+Address hash types: P2PKH, P2SH, Bech32.
+Talk about the address hasing algorithms, the length of each of them.
+Talk about the lenght of the public and private key.
+
+A bitcoin really exists as a series of utxo's linked to bitcoin accounts.
+A bitcoin account consists of a public and private key pair, the address being a hash of the public key.
+
+The actual data that represents the chain of utxo's is stored on many bitcoin nodes throughout the world, thousands of them.
+
+The private keys are not meant to be stored on the Bitcoin blockchain, but are stored by people somehow.
+You can store your private key on a piece of paper, in a file, in a safety deposit box, etc.
+You could even memorize it, maybe.
+
+So, what are bitcoins made of?
+They aren't exactly physical.
+They're a logical concept.
+We can interact with them in our physical world through the Bitcoin protocol.
+The actual bitcoins are a chain of utxo's.
+
+So, what are they made of?
+Hopefully we've discussed enough of the basics of the core components of bitcoins that you can make this determination for yourself.
+It's hard to say for sure.
+
+Explain UTXOs in depth.
+
+Explain the blockchain? How it works?
+
+To explain how Bitcoin works, let's imagine that you and I are going to create our own digital currency.
+How would we do it?
+One of the simplest ways I can think of, is to use a spreadsheet.
+
+We can choose one of us to maintain the spreadsheet, or we could both have access to it.
+Let's say only I have access to the spreadsheet.
+
+We'll call this Friend Coin. FC for short.
+We'll each start with 100 FC.
+It's simple...there will be two columns, one for my balance and one for yours.
+Each row in our spreadsheet will represent our balances after a transaction.
+
+There is only one operation we can perform with our spreadsheet, and that is to give FC to the other person.
+
+This should work pretty well at first.
+If you wash some dishes for me, I'll add a new row and update our balances.
+Every time we want to swap money, I'll just update the spreadsheet.
+
+This is good.
+But what if we want to add more people?
+
+So we add another person.
+Now we have three people.
+
+You both have to trust me to update the balances correctly.
+Let's say we add four, five, six...10 people.
+
+Now it's getting a little bit out of hand.
+If we open up the spreadsheet to everybody, then we all have to ensure that everyone is honest and doesn't make mistakes.
+
+Hmm...it might be better now to centralize it and let the most honest and trustworthy person take care of the spreadsheet.
+
+Now whenever anyone wants to exchange money, we have to somehow contact that person and get them to update the spreadsheet.
+
+What if instead, we each had our own individual copy of the spreadsheet?
+
+Everytime someone wanted to do a transaction, they would have to tell everyone else and compare spreadsheets.
+
+As long as most of the people participating in FC are honest, then you could simply compare spreadsheets after each transaction.
+Whatever most of the spreadsheets said, you could assume is the trust (again, assuming a majority of honest people).
+
+The larger the group of people, the more likely the majority is to be honest, hopefully.
+
+This is similar to how Bitcoin works.
+Anyone can decide to join the network and run a Bitcoin node, thus downloading a copy of the entire spreadsheet or ledger.
+Each node can verify the ledger for itself, and can receive transactions and verify them.
+Whichever history of transactions has the approval of the majority of nodes, becomes the true history of the ledger.
+
+People can interact with the ledger using their address and private key.
+Whenever a user wants to send bitcoin to someone else, they'll take the recipient's address, and sign a transaction with the amount they want to send
+
+Bitcoin isn't even a token that you can really own digitally.
+It's all logical, and what you really own is the ability to move amounts of bitcoin from your address to another address.
+
+UTXO's work like this: If someone sends you 10 BTC, you now have 10 unspent transaction outputs. If you want to send 1 BTC to someone else, you send them all 10 of your BTC.
+9 of that BTC is a UTXO that remains with you.
+1 BTC of that is a spent transaction output that goes to the person you are sending BTC to.
+That person now has 1 more BTC of unspent transaction output.
+
+This is how Bitcoin works.
+
+So, you don't own a physical thing called a Bitcoin.
+You own a private key, and you have an address.
+The address corresponds to UTXOs.
+The private key allows you to spend those utxos.
+
+The address and all of the utxos for yourself and others are stored on thousands of computers throughout the world.
+
+
+## TLDR
+
+
+
+## Introduction
+
+## Conclusion
+
+</xmp>
+                    </template>
+                </zero-md>
+            </div>
+            
+            <div class="extra-info">
+                <div class="extra-info-item">Donations: 0x1139c4Fbc7F8AC3eE07a280af1c4C62cc04f7Df6</div>
+                <div class="extra-info-item">See also <a href="https://usdonethereum.com" target="_blank">USD on Ethereum</a></div>
+                <div class="extra-info-item">Feedback (especially any missed tokens): <a href="https://twitter.com/lastmjs" target="_blank">Twitter</a>, <a href="https://t.me/lastmjs" target="_blank">Telegram</a>, <a href="mailto:jordan.michael.last@gmail.com">Email</a></div>
+                <div class="extra-info-item"><a href="/privacy.html">Privacy</a></div>
+                <div class="extra-info-item"><a href="/oss-attribution/attribution.txt">Open Source</a></div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Does Ethereum halve?</title>
+        <script type="module" src="/node_modules/zero-md/build/zero-md.min.js"></script>
+        <meta description="">
+        <link rel="icon" href="/bitcoin.png">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61431139-5"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-61431139-5', { anonymize_ip: true });
+        </script>
+    </head>
+
+    <body>
+        <style>
+            body {
+                background-color: black;
+                font-family: sans-serif;
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                overflow-x: hidden;
+            }
+
+            a:link {
+                color: orange;
+            }
+
+            a:visited {
+                color: grey;
+            }
+
+            .main-container {
+                width: 100%;
+                height: 100%;
+                box-sizing: border-box;
+                padding-top: calc(50px + 1vmin);
+                padding-right: calc(50px + 1vmin);
+                padding-left: calc(50px + 1vmin);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .extra-info {
+                color: grey;
+                display: flex;
+                justify-content: center;
+                font-size: calc(5px + 1vmin);
+                box-sizing: border-box;
+                padding: calc(10px + 1vmin);
+            }
+
+            .extra-info-item {
+                flex: 1;
+                text-align: center;
+            }
+
+            .top-menu-container {
+                display: flex;
+                width: 100%;
+                color: orange;
+                justify-content: flex-end;
+                cursor: pointer;
+            }
+
+            .top-menu-container a:visited {
+                color: orange;
+            }
+
+            .blog-body-container {
+                width: 50%;
+                font-size: calc(20px + 1vmin);
+            }
+
+            @media (max-width: 1280px) {
+                .blog-body-container {
+                    width: 100%;
+                }
+            }
+        </style>
+
+        <div class="main-container">
+
+            <div class="top-menu-container">
+                <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
+                    <a href="/">BTC Tokens</a>
+                </div>
+                <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
+                    <a href="/blog/blog.html">Blog</a>
+                </div>
+            </div>
+
+            <div class="blog-body-container">
+                <zero-md>
+                    <template>
+                        <style>
+                            h1 {
+                                color: white;
+                            }
+
+                            h2 {
+                                color: white;
+                            }
+
+                            h3 {
+                                color: white;
+                            }
+    
+                            p {
+                                color: white;
+                            }
+
+                            ul {
+                                color: white;
+                            }
+
+                            table {
+                                color: white;
+                                /* white-space: nowrap; */
+                            }
+                        </style>
+    
+                        <xmp>
+# Does Ethereum halve?
+
+### June 4, 2020
+
+## TLDR
+
+Ethereum does not halve in the way that Bitcoin halves.
+It has no pre-determined or scheduled supply decrease of its underlying asset, ETH, like Bitcoin.
+That isn't to say that ETH's rate of supply increase does not or has not decreased over time.
+
+## Introduction
+
+Ethereum has a native asset, known as Ether or ETH.
+ETH is currently created or issued through Ethereum's proof of work consensus mechanism.
+About once every 12 (determine the best average block reward to use) seconds, a new Ethereum block is proposed by one miner of the network.
+Ethereum also allows for and rewards uncle blocks.
+These blocks were mined at the same time as blocks included in the canoncial chain, but they are not included in the direct block history.
+
+Uncle blocks receive 7/8 of the current block reward.
+So currently, as of June 2020, uncle blocks are receiving 1.75 ETH in reward.
+Uncles are currently occuring about 7% of the time currently.
+So in a given day, we'll have about 882 ETH in uncle rewards per day.
+
+All other miners receive this block, and decide to build a new block on it or not.
+The miner who proposed the block with the necessary proof of work, receives a reward in newly minted ETH, and also receives all transaction fees.
+This is how now ETH enters circulation.
+
+ETH is currently, similar to Bitcoin (BTC), inflationary in regards to the supply.
+The supply continues to increase every day.
+
+Bitcoin has a fixed schedule for the rate of issuance of BTC over time.
+Approximately every 4 years, the rate of issuance of BTC is cut in half.
+Just recently, in May 2020, the rate of issuance was cut from 12.5 BTC per block (about 10 minutes), to 6.25 BTC per block.
+
+Ethereum is currently rewarding miners at 2 ETH per block.
+
+Talk about how much ETH was issued without mining, about 72,000,000...but there's an exact amount that I think would be useful to link to or reference.
+
+## How is issuance determined?
+
+Explain disinflation. Link to this blog post: https://blog.ethereum.org/2014/04/10/the-issuance-model-in-ethereum/
+
+Read up on the Ethereum blog posts, they're amazing.
+
+## Current issuance rate
+
+The current issuance rate is 2 ETH per block, and 1.75 ETH per uncle block.
+Assuming a block time of 12 seconds and an uncle rate of 7%, that's about 15,282 ETH per day, 106,974 ETH per week, 427,896 ETH per month, and 5,134,752 ETH per year.
+
+The current supply of ETH is about 111,000,000, so the current issuance rate is approximately 4.63% per year.
+That means the total supply of ETH is inflating at 4.63% per year, approximately.
+If the issuance were to stay at 2 ETH, and block production to stay at 12 seconds, then the rate of supply inflation would naturally go down over time.
+This is because, if the rate of issuance stays fixed at 2 ETH per block, and the rate of block production remains fixed at 12 seconds, then the ratio of block reward to total supply is always decreasing.
+
+## Past issuance rate
+
+ETH has only changed its issuance rate twice in the past.
+The first block reward was set to 5 ETH, with a 4.375 ETH uncle rate.
+This started with the genesis of Ethereum in July 2015, and lasted for 4,370,000 blocks until October 2017.
+At that point, the rate was cut to 3 ETH for the block reward, and 2.625 ETh for the uncle reward.
+That lasted for 2,910,000 blocks, and at block 7,280,000 the block reward was cut to 2 ETH and 1.75 ETH for uncles.
+
+This is the current rate.
+
+## Future issuance rate
+
+Future issuance is going to get very interesting.
+As far as I know, there are no set plans to cut the 2 ETH.
+There are two major changes to the Ethereum protocol that are going to affect issuance.
+EIP 1559, if implemented, and staking.
+
+### EIP 1559
+
+### Staking
+
+Staking will provide for a dynamic issuance rate based on the total amount of ETH staked.
+Go into the details of what is currently envisioned for ETH staking and issuance.
+Make sure to help people to understand that this is not set in stone...as far as I know.
+Actually, it might be in the spec, should check.
+
+The current rate of issuance is.
+
+The history of its rate of issuance has been.
+
+The philosophy behind Ethereum's issuance rate is the minimum necessary issuance.
+
+This is determined by the core team/miners...verify this.
+
+Go into the history of Ethereum's issuance.
+
+Go into the potential future of Ethereum's issuance.
+
+Talk about EIP 1559.
+
+Talk about staking.
+
+## Conclusion
+
+And there you have it.
+Ethereum does not engage in a halving like Bitcoin does.
+But, it's rate of issuance has continued to decrease over time.
+Even without any changes, the rate of issuance will naturally decrease over time.
+Changes on the horizon point towards an issuance rate even lower than current.
+Also, Ethereum has a history of lowering its issuance rate that has not been violated.
+
+And that's how Ethereum issuance works.
+
+</xmp>
+                    </template>
+                </zero-md>
+            </div>
+            
+            <div class="extra-info">
+                <div class="extra-info-item">Donations: 0x1139c4Fbc7F8AC3eE07a280af1c4C62cc04f7Df6</div>
+                <div class="extra-info-item">See also <a href="https://usdonethereum.com" target="_blank">USD on Ethereum</a></div>
+                <div class="extra-info-item">Feedback (especially any missed tokens): <a href="https://twitter.com/lastmjs" target="_blank">Twitter</a>, <a href="https://t.me/lastmjs" target="_blank">Telegram</a>, <a href="mailto:jordan.michael.last@gmail.com">Email</a></div>
+                <div class="extra-info-item"><a href="/privacy.html">Privacy</a></div>
+                <div class="extra-info-item"><a href="/oss-attribution/attribution.txt">Open Source</a></div>
+            </div>
+        </div>
+    </body>
+</html>
