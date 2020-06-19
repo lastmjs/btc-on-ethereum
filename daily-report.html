@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Daily Report - BTC on Ethereum</title>
+        <link rel="icon" href="bitcoin.png">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-61431139-5"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-61431139-5', { anonymize_ip: true });
+        </script>
+        <meta name="description" content="Tracks Bitcoin (BTC) that has been tokenized and issued on the Ethereum blockchain">
+    </head>
+
+    <body>
+        <style>
+            body {
+                background-color: black;
+                font-family: sans-serif;
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                overflow: hidden;
+                color: white;
+                padding: calc(50px + 1vmin);
+                box-sizing: border-box;
+            }
+
+            .main-container {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                box-sizing: border-box;
+                /* overflow-y: scroll; */
+            }
+
+            .title {
+                font-size: calc(50px + 1vmin);
+                padding: calc(25px + 1vmin);
+                text-align: center;
+            }
+
+            .subtitle {
+                text-align: center;
+                font-size: calc(25px + 1vmin);
+                padding: calc(25px + 1vmin);
+            }
+
+            .paragraph {
+                width: 50%;
+                font-size: calc(20px + 1vmin);
+            }
+
+            @media (max-width: 1280px) {
+                .paragraph {
+                    width: 100%;
+                }
+            }
+        </style>
+
+        <div class="main-container">            
+            <div class="title">BTC on Ethereum Daily Report</div>
+
+            <p class="paragraph">
+                The Daily Report is an experimental idea.
+                It would be a daily email newsletter, and would most likely contain all of the basic information from the BTC on Ethereum homepage, in addition to some unique statistics just for Daily Report subscribers.
+            </p>
+
+            <p class="paragraph">
+                If you're interested in the Daily Report, please fill out the form below:
+            </p>
+
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScUq-2RBbirx-6r8reHIOvAMCVz-5MCls-qnuEj2AQzejXaWw/viewform?embedded=true" style="width: 100%; height: 50vh" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </div>
+    </body>
+</html>

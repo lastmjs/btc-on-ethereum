@@ -258,6 +258,7 @@ class BEApp extends HTMLElement {
                     top: 20px;
                     width: 100%;
                     text-align: center;
+                    font-size: 25px;
                 }
 
                 a:link {
@@ -282,7 +283,7 @@ class BEApp extends HTMLElement {
             </style>
 
             <div class="be-app-top-notice">
-                Preorder the book: <a href="bitcoins-journey-to-ethereum.html" target="_blank">Bitcoin's Journey to Ethereum</a>
+                Want daily stats sent to your email? Check out the <a href="daily-report.html" target="_blank">Daily Report</a>
             </div>
 
             <div class="be-app-bitcoin-logo">
@@ -294,15 +295,6 @@ class BEApp extends HTMLElement {
             </div>
 
             <div class="be-app-main-container">
-
-                <div class="be-app-top-menu-container">
-                    <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
-                        <a href="/">BTC Tokens</a>
-                    </div>
-                    <div style="padding: calc(5px + 1vmin); font-size: calc(25px + 1vmin)">
-                        <a href="/blog/blog.html">Blog</a>
-                    </div>
-                </div>
 
                 <div class="be-app-tokens-and-charts-container">
                 
