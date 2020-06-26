@@ -6,7 +6,8 @@
     "start": "zwitterion --port 6798",
     "build": "zwitterion --port 6798 --build-static --exclude node_modules --include lit-html,reduxular,redux/es,ethers/dist",
     "install": "generate-attribution",
-    "get-btc-token-history": ". .env/.development && ts-node --transpile-only scripts/get-btc-token-history.ts"
+    "get-btc-token-history": ". .env/.development && ts-node --transpile-only scripts/get-btc-token-history.ts",
+    "generate-btc-token-history-csv": "ts-node --transpile-only scripts/generate-btc-token-history-csv.ts"
   },
   "repository": {
     "type": "git",
