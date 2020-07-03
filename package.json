@@ -8,6 +8,7 @@
     "install": "generate-attribution",
     "get-btc-token-history": ". .env/.development && ts-node --transpile-only scripts/get-btc-token-history.ts",
     "generate-btc-token-history-csv": "ts-node --transpile-only scripts/generate-btc-token-history-csv.ts",
+    "generate-static-info": "npm run get-btc-token-history && npm run generate-btc-token-history-csv",
     "check-csv-totals": "ts-node --transpile-only scripts/check-csv-totals.ts"
   },
   "repository": {
