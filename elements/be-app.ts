@@ -283,7 +283,7 @@ class BEApp extends HTMLElement {
             </style>
 
             <div class="be-app-top-notice">
-                Want even more stats sent to your email daily? Check out the <a href="daily-report.html" target="_blank">Daily Report</a>
+                Looking for a web development or blockchain mentor? Sign up for <a href="https://webdevelopertraining.org/mentorship" target="_blank">mentorship here</a>
             </div>
 
             <div class="be-app-bitcoin-logo">
