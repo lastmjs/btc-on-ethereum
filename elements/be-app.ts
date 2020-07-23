@@ -283,7 +283,7 @@ class BEApp extends HTMLElement {
             </style>
 
             <div class="be-app-top-notice">
-                Looking for a web development or blockchain mentor? Sign up for <a href="https://webdevelopertraining.org/mentorship" target="_blank">mentorship here</a>
+                <a href="https://webdevelopertraining.org/mentorship" target="_blank">Sign up</a> for web dev or blockchain mentorship from the creator of BTC on Ethereum
             </div>
 
             <div class="be-app-bitcoin-logo">
