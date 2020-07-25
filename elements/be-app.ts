@@ -366,7 +366,7 @@ async function getBTCPriceInUSD(provider: Readonly<ethers.providers.BaseProvider
 }
 
 function formatBigNumberBTCForDisplay(bigNumber: BigNumber): string {
-    return bigNumber.toFormat(2, {
+    return bigNumber.toFormat(0, {
         groupSize: 3,
         groupSeparator: ',',
         decimalSeparator: '.'
@@ -374,7 +374,7 @@ function formatBigNumberBTCForDisplay(bigNumber: BigNumber): string {
 }
 
 function formatBigNumberUSDForDisplay(bigNumber: BigNumber): string {
-    return bigNumber.toFormat(2, {
+    return bigNumber.toFormat(0, {
         groupSize: 3,
         groupSeparator: ',',
         decimalSeparator: '.',
