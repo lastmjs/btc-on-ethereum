@@ -12,7 +12,9 @@ import { BigNumber } from 'bignumber.js';
 import * as fs from 'fs';
 
 (async () => {
-    const provider: Readonly<ethers.providers.BaseProvider> = ethers.getDefaultProvider('homestead');
+    const provider: Readonly<ethers.providers.BaseProvider> = ethers.getDefaultProvider('homestead', {
+        quorum: 1 // TODO I would prefer to not set the quorum to 1, but I keep getting quorum not reached errors: https://github.com/ethers-io/ethers.js/issues/841
+    });
     // const provider: Readonly<ethers.providers.BaseProvider> = new ethers.providers.JsonRpcProvider(process.env.ETHEREUM_JSON_RPC_ENDPOINT);
     const latestBlockNumber: number = await provider.getBlockNumber();
 
