@@ -1,5 +1,5 @@
 @ethersproject/abi
-5.0.0-beta.155 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -26,7 +26,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/abstract-provider
-5.0.0-beta.141 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -53,7 +53,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/abstract-signer
-5.0.0-beta.144 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -80,7 +80,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/address
-5.0.0-beta.135 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -107,7 +107,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/base64
-5.0.0-beta.134 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -134,7 +134,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/basex
-5.0.0-beta.133 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 Forked from https://github.com/cryptocoinjs/bs58
 Originally written by Mike Hearn for BitcoinJ
 Copyright (c) 2011 Google Inc
@@ -171,7 +171,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/bignumber
-5.0.0-beta.139 <https://github.com/ethers-io/ethers.js>
+5.0.5 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -198,7 +198,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/bytes
-5.0.0-beta.138 <https://github.com/ethers-io/ethers.js>
+5.0.3 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -225,7 +225,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/constants
-5.0.0-beta.134 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -252,7 +252,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/contracts
-5.0.0-beta.153 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -279,7 +279,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/hash
-5.0.0-beta.134 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -306,7 +306,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/hdnode
-5.0.0-beta.140 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -333,7 +333,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/json-wallets
-5.0.0-beta.140 <https://github.com/ethers-io/ethers.js>
+5.0.3 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -360,7 +360,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/keccak256
-5.0.0-beta.132 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -387,14 +387,14 @@ SOFTWARE.
 ******************************
 
 @ethersproject/logger
-5.0.0-beta.137 <https://github.com/ethers-io/ethers.js>
+5.0.4 <https://github.com/ethers-io/ethers.js>
 license: MIT
 authors: Richard Moore <me@ricmoo.com>
 
 ******************************
 
 @ethersproject/networks
-5.0.0-beta.137 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -421,7 +421,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/pbkdf2
-5.0.0-beta.136 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -448,7 +448,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/properties
-5.0.0-beta.141 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -475,7 +475,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/providers
-5.0.0-beta.168 <https://github.com/ethers-io/ethers.js>
+5.0.5 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -502,7 +502,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/random
-5.0.0-beta.136 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -529,7 +529,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/rlp
-5.0.0-beta.133 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -556,7 +556,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/sha2
-5.0.0-beta.137 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -583,7 +583,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/signing-key
-5.0.0-beta.136 <https://github.com/ethers-io/ethers.js>
+5.0.3 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -610,7 +610,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/solidity
-5.0.0-beta.132 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -637,7 +637,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/strings
-5.0.0-beta.137 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -664,7 +664,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/transactions
-5.0.0-beta.136 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -691,7 +691,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/units
-5.0.0-beta.133 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -718,7 +718,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/wallet
-5.0.0-beta.141 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -745,7 +745,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/web
-5.0.0-beta.141 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -772,7 +772,7 @@ SOFTWARE.
 ******************************
 
 @ethersproject/wordlists
-5.0.0-beta.137 <https://github.com/ethers-io/ethers.js>
+5.0.2 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -957,14 +957,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ******************************
 
 elliptic
-6.5.2 <https://github.com/indutny/elliptic>
+6.5.3 <https://github.com/indutny/elliptic>
 license: MIT
 authors: Fedor Indutny <fedor@indutny.com>
 
 ******************************
 
 ethers
-5.0.0-beta.188 <https://github.com/ethers-io/ethers.js>
+5.0.7 <https://github.com/ethers-io/ethers.js>
 MIT License
 
 Copyright (c) 2019 Richard Moore
@@ -1325,14 +1325,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-
-******************************
-
-uuid
-2.0.1 <https://github.com/shtylman/node-uuid>
-Copyright (c) 2010-2012 Robert Kieffer
-MIT License - http://opensource.org/licenses/mit-license.php
 
 
 ******************************
