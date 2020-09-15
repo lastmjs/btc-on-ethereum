@@ -355,7 +355,7 @@ async function getTotalSupply(btcToken: Readonly<BTCToken>, provider: Readonly<e
 
 async function getBTCPriceInUSD(provider: Readonly<ethers.providers.BaseProvider>): Promise<BigNumber> {
 
-    const chainlinkBTCUSDContractAddress = '0xF5fff180082d6017036B771bA883025c654BC935';
+    const chainlinkBTCUSDContractAddress = '0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c';
 
     const chainlinkBTCUSDContractABI = [
         'function latestAnswer() external view returns (int256)'
