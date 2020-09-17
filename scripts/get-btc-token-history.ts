@@ -11,11 +11,14 @@ import { gqlRequest } from '../services/graphql';
 import { BigNumber } from 'bignumber.js';
 import * as fs from 'fs';
 
+// TODO we cannot have any errors in this process. If an error occurs we should retry
+// TODO I want to have the confidence that this process is done perfectly or not done
+// TODO we should also be careful about going up to the latest block because of potential reorgs
 (async () => {
-    const provider: Readonly<ethers.providers.BaseProvider> = ethers.getDefaultProvider('homestead', {
-        quorum: 1 // TODO I would prefer to not set the quorum to 1, but I keep getting quorum not reached errors: https://github.com/ethers-io/ethers.js/issues/841
-    });
-    // const provider: Readonly<ethers.providers.BaseProvider> = new ethers.providers.JsonRpcProvider(process.env.ETHEREUM_JSON_RPC_ENDPOINT);
+    // const provider: Readonly<ethers.providers.BaseProvider> = ethers.getDefaultProvider('homestead', {
+    //     quorum: 1 // TODO I would prefer to not set the quorum to 1, but I keep getting quorum not reached errors: https://github.com/ethers-io/ethers.js/issues/841
+    // });
+    const provider: Readonly<ethers.providers.BaseProvider> = new ethers.providers.JsonRpcProvider('https://blue-young-wave.quiknode.pro/d112df71fbe22ff0cdd7e735142b8bae6dd22041/');
     const latestBlockNumber: number = await provider.getBlockNumber();
 
     for (let i=0; i < btcTokens.length; i++) {
