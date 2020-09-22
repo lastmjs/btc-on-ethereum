@@ -117,12 +117,12 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         totalSupply: 'NOT_SET',
         initialTotalSupply: '0',
         usdPrice: 'NOT_SET',
-        contractAddress: '0x1bBE271d15Bb64dF0bc6CD28Df9Ff322F2eBD847',
+        contractAddress: '0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa',
         abi: [
             'function totalSupply() external view returns (uint256)'
         ],
         functionName: 'totalSupply',
-        href: 'https://etherscan.io/token/0x1bBE271d15Bb64dF0bc6CD28Df9Ff322F2eBD847',
+        href: 'https://etherscan.io/token/0x8dAEBADE922dF735c38C80C7eBD708Af50815fAa',
         mintTopics: [
             '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
             '0x0000000000000000000000000000000000000000000000000000000000000000'
