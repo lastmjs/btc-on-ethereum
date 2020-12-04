@@ -219,5 +219,33 @@ export const btcTokens: ReadonlyArray<BTCToken> = [
         description: `
             <div class="be-description-title">vBTC</div>
         `
+    },
+    {
+        name: 'oBTC',
+        decimals: 18,
+        totalSupply: 'NOT_SET',
+        initialTotalSupply: '0',
+        usdPrice: 'NOT_SET',
+        contractAddress: '0x8064d9ae6cdf087b1bcd5bdf3531bd5d8c537a68',
+        abi: [
+            'function totalSupply() external view returns (uint256)'
+        ],
+        functionName: 'totalSupply',
+        href: 'https://etherscan.io/token/0x8064d9ae6cdf087b1bcd5bdf3531bd5d8c537a68',
+        mintTopics: [
+            '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
+            '0x0000000000000000000000000000000000000000000000000000000000000000'
+        ],
+        burnTopics: [
+            '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef',
+            null,
+            '0x0000000000000000000000000000000000000000000000000000000000000000'
+        ],
+        getAmountFromLog: (log: Readonly<ethers.providers.Log>) => {
+            return new BigNumber(log.data).toString();
+        },
+        description: `
+            <div class="be-description-title">oBTC</div>
+        `
     }
 ];
