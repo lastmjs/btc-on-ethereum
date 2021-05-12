@@ -24,7 +24,7 @@
   "homepage": "https://github.com/lastmjs/btc-on-ethereum#readme",
   "dependencies": {
     "bignumber.js": "9.0.0",
-    "chart.js": "2.9.3",
+    "chart.js": "2.9.4",
     "ethers": "5.0.7",
     "lit-html": "1.2.1",
     "reduxular": "0.0.6",
