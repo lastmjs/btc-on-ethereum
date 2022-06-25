@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@types/node": "14.0.4",
-    "node-fetch": "2.6.0",
+    "node-fetch": "2.6.7",
     "oss-attribution-generator": "1.7.1",
     "ts-node": "8.10.1",
     "zwitterion": "0.45.0"
